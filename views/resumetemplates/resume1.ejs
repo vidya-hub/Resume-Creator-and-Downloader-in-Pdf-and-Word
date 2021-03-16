@@ -1,0 +1,254 @@
+<!doctype html>
+<html moznomarginboxes mozdisallowselectionprint>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0">
+    <title>PDF 1</title>
+    <style type="text/css" media="print">
+        @page {
+            size: auto;
+            margin: 5mm;
+
+        }
+        html{zoom: 0.7;}
+        /* uncomment for check A4 size */
+        @page {
+            size: 7in 9.25in;
+            margin: 27mm 16mm 27mm 16mm;
+        } 
+
+        @media print {
+            .footer,
+            #non-printable {
+                display: none !important;
+            }
+            #printable {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body style="padding:0px; margin:0px; box-sizing: border-box;">
+    <div id="exportContent">
+    <div style="margin:15px;padding:0px;font-family: PT Sans, sans-serif;">
+        <div>
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <div style="border-bottom: 2px solid #000; ">
+                                                    <p
+                                                        style="text-align: center;font-size: 24px;border-bottom: 1px solid #000;margin: 0;margin-bottom: 3px;padding: 25px 0;">
+                                                        <%= firstName %> <%= lastName %>
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                        <tr style="margin-top: 5px;">
+                                            <td>
+                                                <ul style="text-align: center; list-style-position: inside;">
+                                                    <li style="font-size: 16px;  display:inline;">
+                                                        1 <%=address %>,</li>
+                                                    <li style="font-size: 16px;  display:inline;">
+                                                        2 <%=phoneNo %>,</li>
+                                                    <li style="font-size: 16px;  display:inline;">
+                                                        3 <%=email %></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+
+                                        <% if (links && links.length>0) { %>
+                                        <tr>
+                                            <td>
+                                                <ul style="text-align: center; list-style-position: inside;">
+                                                    <% for(var i=0; i < links.length; i++) { %>
+                                                    <li style="font-size: 16px; margin-bottom: 5px;">
+                                                        <%=links[i]%></li>
+                                                    <% } %>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+
+                                        <% if (professionalSummary) { %>
+                                        <tr>
+                                            <td style="padding-bottom: 30px;">
+                                                <p
+                                                    style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                    Professional Summary</p>
+                                                <p style="color: #000; font-size: 16px; "><%=professionalSummary%></p>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+
+
+                                        <% if (skills && skills.length>0) { %>
+                                        <tr>
+                                            <td style="padding-bottom: 30px;">
+                                                <p
+                                                    style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                    Skills</p>
+                                                <ul
+                                                    style="text-align: left;list-style-position: inside;margin: 0;padding: 0;display: flex;flex-wrap: wrap;">
+                                                    <% for(var i=0; i < skills.length; i++) { %>
+                                                    <li style="width: 50%;"><%=skills[i]%></li>
+                                                    <% } %>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+
+                                        <% if (workHistory && workHistory.length>0) { %>
+                                        <tr>
+                                            <td>
+                                                <p
+                                                    style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                    Professional Experience</p>
+                                            </td>
+                                        </tr>
+                                        <% for(var i=0; i < workHistory.length; i++) { %>
+                                        <tr>
+
+                                            <td style="padding-bottom: 15px;">
+                                                <p style="color: #000; font-size: 16px; ">
+                                                    <span style="font-weight: bold"><%=workHistory[i].jobTitle%></span>,
+                                                    <%= new Date(workHistory[i].startDate).getMonth() + 1 +'/'+new Date(workHistory[i].startDate).getFullYear() %>
+                                                    to
+                                                    <% if (workHistory[i].currentlyWorkHere) { %>
+                                                    <span>Currant </span>
+                                                    <% } %>
+                                                    <% if (!workHistory[i].currentlyWorkHere) { %>
+                                                    <span><%= new Date(workHistory[i].endDate).getMonth() + 1 +'/'+new Date(workHistory[i].endDate).getFullYear() %></span>
+                                                    <% } %>
+                                                </p>
+                                                <p style="color: #000; font-size: 16px; "><%=workHistory[i].employer%> -
+                                                    <%=workHistory[i].city%>,<%=workHistory[i].state%>
+                                                </p>
+                                                <!-- <ul>
+                                                                    <li style="font-size: 16px; margin-bottom: 5px;">
+                                                                        https://www.google.com/</li>
+                                                                    <li style="font-size: 16px; margin-bottom: 5px;">
+                                                                        https://www.google.com/</li>
+                                                                    <li style="font-size: 16px; margin-bottom: 5px;">
+                                                                        https://www.google.com/</li>
+                                                                </ul> -->
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                        <% } %>
+
+                                        <% if (education && education.length>0) { %>
+                                        <tr>
+                                            <td>
+                                                <p
+                                                    style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                    Education</p>
+                                            </td>
+                                        </tr>
+                                        <% for(var i=0; i < education.length; i++) { %>
+                                        <tr>
+                                            <td style="padding-bottom: 30px;">
+
+                                                <p style="color: #000; font-size: 16px; "><%=education[i].fieldOfStudy%>
+                                                    <%=education[i].degree%>: <%=education[i].graduationYear%></p>
+                                                <p><%=education[i].schoolName%> - <%=education[i].schoolLocation%>,
+                                                    <%=education[i].state%></p>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                        <% } %>
+
+
+                                        <% if (accomplishments && accomplishments.length>0) { %>
+                                        <tr>
+                                            <td style="padding-bottom: 15px;">
+                                                <p
+                                                    style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                    Accomplishments</p>
+                                                <ul>
+                                                    <% for(var i=0; i < accomplishments.length; i++) { %>
+                                                    <li style="font-size: 16px; margin-bottom: 5px;">
+                                                        <%=accomplishments[i]%></li>
+                                                    <% } %>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+
+                                        <% if (affiliations && affiliations.length>0) { %>
+                                        <tr>
+                                            <td style="padding-bottom: 15px;">
+                                                <p
+                                                    style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                    Affilations</p>
+                                                <ul>
+                                                    <% for(var i=0; i < affiliations.length; i++) { %>
+                                                    <li style="font-size: 16px; margin-bottom: 5px;">
+                                                        <%=affiliations[i]%></li>
+                                                    <% } %>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+
+
+                                        <% if (certifications && certifications.length>0) { %>
+                                        <tr>
+                                            <td style="padding-bottom: 15px;">
+                                                <p
+                                                    style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                    Certifications</p>
+                                                <ul>
+                                                    <% for(var i=0; i < certifications.length; i++) { %>
+                                                    <li style="font-size: 16px; margin-bottom: 5px;">
+                                                        <%=certifications[i]%>
+                                                    </li>
+                                                    <% } %>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+
+
+                                        <% if (additionalInformation && additionalInformation.length>0) { %>
+                                        <tr>
+                                            <td style="padding-bottom: 15px;">
+                                                <p
+                                                    style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                    Additional Information</p>
+                                                <% for(var i=0; i < additionalInformation.length; i++) { %>
+                                                <p style="font-size: 16px; line-height: 16px;"><span
+                                                        style="font-weight: bold"><%=additionalInformation[i].title%>
+                                                    </span>:-
+                                                    <%=additionalInformation[i].description%></p>
+                                                <% } %>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
