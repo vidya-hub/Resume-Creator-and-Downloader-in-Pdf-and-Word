@@ -2,11 +2,9 @@
 var express = require('express');
 var app = express();
 let ejs = require("ejs");
-let pdf = require("html-pdf");
 let path = require("path");
 app.set('view engine', 'ejs');
-var unoconv = require('unoconv'); 
-// const Blob = require("cross-blob");
+const Blob = require("cross-blob");
 var htmlDocx = require("html-docx-js")
 var fs = require('fs');
 function Export2Doc(element, filename = ''){
