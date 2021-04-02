@@ -161,6 +161,21 @@
                                             </td>
                                         </tr>
                                         <% } %>
+                                        <% if (objectives && objectives.length>0) { %>
+                                            <tr>
+                                                <td style="padding-bottom: 15px;">
+                                                    <p
+                                                        style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                        objectives</p>
+                                                    <ul>
+                                                        <% for(var i=0; i < objectives.length; i++) { %>
+                                                        <li style="font-size: 16px; margin-bottom: 5px;">
+                                                            <%=objectives[i]%></li>
+                                                        <% } %>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <% } %>
                                         <% if (affiliations && affiliations.length>0) { %>
                                         <tr>
                                             <td style="padding-bottom: 15px;">
@@ -207,6 +222,22 @@
                                             </td>
                                         </tr>
                                         <% } %>
+                                        <% if (refrences && refrences.length>0) { %>
+                                            <tr>
+                                                <td style="padding-bottom: 15px;">
+                                                    <p
+                                                        style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                        references Information</p>
+                                                    <% for(var i=0; i < additionalInformation.length; i++) { %>
+                                                    <p style="font-size: 16px; line-height: 16px; margin-left:20px;"> <%=refrences[i].name%></p>
+                                                    <p style="font-size: 16px; line-height: 16px; margin-left:20px;"> <%=refrences[i].position%></p>
+                                                    <p style="font-size: 16px; line-height: 16px; margin-left:20px;"> <%=refrences[i].email%></p>
+                                                    <p style="font-size: 16px; line-height: 16px; margin-left:20px;"> <%=refrences[i].phone%></p>
+
+                                                    <% } %>
+                                                </td>
+                                            </tr>
+                                            <% } %>
                                     </table>
                                 </td>
                             </tr>

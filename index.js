@@ -2,15 +2,57 @@
 var express = require('express');
 var app = express();
 var grabzit = require('grabzit');
-
+var nodemailer = require('nodemailer');
+var HTMLParser = require('node-html-parser');
+var bodyParser = require('body-parser');
+const { response } = require('express');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
+app.set('views', __dirname + '/views');
+app.engine('html', require('ejs').renderFile);
 var http = require('http'),
     fs = require('fs'),
     url = require('url');
 let ejs = require("ejs");
 let path = require("path");
 app.set('view engine', 'ejs');
-var htmlDocx = require("html-docx-js")
+const HTMLtoDOCX = require('html-to-docx');
+const filePath = './example.docx';
+
 var fs = require('fs');
+
+
+function convertWord(htmlString){
+     // // var client = new grabzit("OGMyYzcwMzViNmZlNDg2ZGI0MmE1Y2ZmZDI2NDY0ODU=", "WVgsZT8/XXs/PwQ/Pz8KfV5SPz8zEz95Pz8/LVg/Pz8=");
+            // // client.html_to_docx(data);
+            // // client.save_to(docfullname, function (error, id) {
+            // //     if (id == null) {
+            // //         fs.readFile(docfullname, function (err, content) {
+            // //             if (err) {
+            // //                 res.writeHead(400, { 'Content-type': 'text/html' })
+            // //                 console.log(err);
+            // //                 res.end("No such file");
+            // //             } else {
+            // //                 //specify the content type in the response will be an image
+            // //                 res.writeHead(200, {
+            // //                     'Content-Type': "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            // //                     'Content-disposition': 'attachment;filename=' + docfullname,
+            // //                 });
+            // //                 res.end(content);
+            // //             }
+            // //         });
+            // //         fs.unlink(docfullname, function (err) {
+            // //             if (err) throw err;
+            // //             console.log('file deleted');
+            // //         });
+            // //     }
+            // //     if (error != null) {
+            // //         throw error;
+            // //     }
+            // });
+}
+
+
 function exportHTML(htmldata) {
     // var sourceHTML = header+document.getElementById("source-html").innerHTML+footer;
 
@@ -30,6 +72,7 @@ var session = require('express-session')({
 });
 app.use(session);
 
+app.use(express.static('./'));
 var resdata = {
     firstName: "Vidya Sagar",
     lastName: "Mavuduru",
@@ -46,8 +89,15 @@ var resdata = {
             "enddate": "2020-12-01",
             "city": "srikakulam",
             "state": "Andhra Pradesh",
+            "responsibility": ["this was my res"],
+            "environment": ["environment", "java", "python"]
         },
 
+
+    ],
+    objectives: [
+        "object 1",
+        "object 2",
 
     ],
     birthDate: "1999-24-08",
@@ -70,7 +120,12 @@ var resdata = {
         "no appliations",
         "no appliations",
     ],
-    refrences: ["Linked In", "Facebook"],
+    refrences: [{
+        "name": "vidya",
+        "position": "dev",
+        "email": "@gmail",
+        "phone": "1234567989"
+    }],
     certifications: [
         "two of then",
         "two of then",
@@ -88,15 +143,26 @@ var resdata = {
         "Nice on acctually",
         "Nice on acctually",
 
-    ]
+    ],
+    namevalue: "vidya"
 }
 
 function timeout(ms) { //pass a time in milliseconds to this function
     return new Promise(resolve => setTimeout(resolve, ms));
 };
 
+async function htmldocx(htmlString) {
+    const fileBuffer = await HTMLtoDOCX(htmlString, null);
 
-pathval = path.join(__dirname, 'views/resumetemplates/', "resume1.ejs")
+    fs.writeFile(filePath, fileBuffer, (error) => {
+        if (error) {
+            console.log('Docx file creation failed');
+            return;
+        }
+        console.log('Docx file created successfully');
+    });
+};
+pathval = path.join(__dirname, 'views/resumetemplates/', "resume3.ejs")
 console.log(fs.existsSync("index.js"));
 
 app.get('/', async (req, res) => {
@@ -105,46 +171,41 @@ app.get('/', async (req, res) => {
     ejs.renderFile(pathval, resdata, (err, data) => {
         if (err) {
             res.send(err);
+            console.log(err);
         } else {
-            var client = new grabzit("MTY4NTViYmUzOTliNGY3Yzk1Zjg1MWFjZWMzNDUwNTA=", "PyMYJDg/Wj8/QnE/Pz9YPz8/Pz8/RxxnPwBgPz8/Pz8=");
-            client.html_to_docx(data);
-            client.save_to(docfullname, function (error, id) {
-                if (id == null) {
-                    fs.readFile(docfullname, function (err, content) {
-                        if (err) {
-                            res.writeHead(400, { 'Content-type': 'text/html' })
-                            console.log(err);
-                            res.end("No such file");
-                        } else {
-                            //specify the content type in the response will be an image
-                            res.writeHead(200, {
-                                'Content-Type': "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                                'Content-disposition': 'attachment;filename=' + docfullname,
-                            });
-                            res.end(content);
-                        }
-                    });
-                    fs.unlink(docfullname, function (err) {
-                        if (err) throw err;
-                        console.log('file deleted');
-                    });
-                }
-                if (error != null) {
-                    throw error;
-                }
-            });
+
+            htmldocx(data.toString());
+            res.send(data.toString());
+           
+           
         }
     });
 });
 
-var pathejs = path.join(__dirname, 'views/resumetemplates/', "resume1.ejs")
+var pathejs = path.join(__dirname, 'views/resumetemplates/', "resume4.ejs")
+var pathhtml = path.join(__dirname, 'views/resumetemplates/', "index.html")
 
-app.get('/render', async (req, res) => {
-    ejs.renderFile(pathejs, resdata, (err, data) => {
-        res.render("resumetemplates/resume3.ejs", resdata)
-    });
-})
+app.get('/render', (req, res) => {
+    ejs.renderFile(pathejs, resdata, (err, htmldata) => {
+        // fs.writeFile("test.html",htmldata,(err)=>{
+        //     // console.log(err);
+        //     if (err==null){
+        //         fs.readFile(__dirname + '/test.html', 'utf8', function(err, html){
+        //             console.log(html);
+        //             htmldocx(html.toString());
 
+        //             res.writeHead(200, {'Content-Type': 'text/html'});
+        //             res.write(html.toString());
+        //         });
+        //     }
+        // });
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.write(htmldata.toString());
+
+        // res.sendFile('index.html', { root: app.get('views') },);
+        // res.render(pathejs, resdata);
+    })
+});
 
 
 

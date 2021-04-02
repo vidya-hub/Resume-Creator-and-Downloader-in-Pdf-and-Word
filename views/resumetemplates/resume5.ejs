@@ -195,6 +195,22 @@
                                                 <% } %>
                                             </div>
                                             <% } %>
+                                            <% if (refrences && refrences.length>0) { %>
+                                                <div style="padding-bottom: 30px;">
+                                                    <p
+                                                        style="font-size: 18px; line-height: 24px; color: #000; margin-bottom: 15px; margin-top: 0; text-transform: uppercase;">
+                                                        references information</p>
+                                                    <% for(var i=0; i < refrences.length; i++) { %>
+                                                <li>
+                                                    <span style="padding-left: 20px;"><%=refrences[i].name%> </span>
+                                                    <span><%=refrences[i].position%> </span>
+                                                    <span><%=refrences[i].email%> </span>
+                                                    <span><%=refrences[i].phone%> </span>
+                                                </li>
+                                                       
+                                                    <% } %>
+                                                </div>
+                                                <% } %>
                                         </td>
                                     </tr>
 

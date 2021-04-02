@@ -1,5 +1,6 @@
 <!doctype html>
-<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<!-- <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'> -->
+<html  lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -31,7 +32,7 @@
 </head>
 
 <body style="padding:0px; margin:0px; box-sizing: border-box;">
-    <div id="exportContent">
+    
     <div style="margin:15px;padding:0px;font-family: PT Sans, sans-serif;">
         <div>
             <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -188,6 +189,22 @@
                                             </td>
                                         </tr>
                                         <% } %>
+                                        
+                                        <% if (objectives && objectives.length>0) { %>
+                                            <tr>
+                                                <td style="padding-bottom: 15px;">
+                                                    <p
+                                                        style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                        objectives</p>
+                                                    <ul>
+                                                        <% for(var i=0; i < objectives.length; i++) { %>
+                                                        <li style="font-size: 16px; margin-bottom: 5px;">
+                                                            <%=objectives[i]%></li>
+                                                        <% } %>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <% } %>
 
                                         <% if (affiliations && affiliations.length>0) { %>
                                         <tr>
@@ -239,6 +256,25 @@
                                             </td>
                                         </tr>
                                         <% } %>
+                                        <% if (refrences && refrences.length>0) { %>
+                                            <tr>
+                                                <td>
+                                                    <p
+                                                        style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                        references</p>
+                                                </td>
+                                            </tr>
+                                            <% for(var i=0; i < refrences.length; i++) { %>
+                                            <tr>
+                                                <td style="padding-bottom: 30px;">
+    
+                                                    <p style="color: #000; font-size: 16px; "><%=refrences[i].name%></p>
+                                                    <p style="color: #000; font-size: 16px; "><%=refrences[i].position%></p>
+                                                    <p style="color: #000; font-size: 16px; "><%=refrences[i].phone%></p>
+                                                    <p style="color: #000; font-size: 16px; "><%=refrences[i].email%></p>
+                                            </tr>
+                                            <% } %>
+                                            <% } %>
                                     </table>
                                 </td>
                             </tr>
@@ -246,7 +282,7 @@
                     </td>
                 </tr>
             </table>
-        </div>
+        
     </div>
     </div>
 </body>
