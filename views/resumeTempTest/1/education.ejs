@@ -1,0 +1,40 @@
+<% if (education && education.length>0) { %>
+<div
+  class="section"
+  style="border-top: 1px solid #ccc; margin: 1em 0; padding: 1em"
+>
+  <h2
+    style="
+      width: 14em;
+      float: left;
+      font-size: 1em;
+      font-variant: small-caps;
+      letter-spacing: 0.06em;
+    "
+  >
+    Education Details
+  </h2>
+
+  <div class="content" style="width: 32em; margin: 0 0 0 16em">
+    <% for( let i = 0; i < education.length; i++ ) { %>
+
+    <span
+      class="date"
+      style="
+        float: right;
+        font-size: 0.8em;
+        margin-top: 0.4em;
+        text-align: right;
+      "
+      ><%= education[i].graduationYear %>
+    </span>
+    <h3 style="margin-bottom: 0">
+      <%= education[i].fieldOfStudy %> <%=education[i].degree%>
+    </h3>
+    <address style="font-style: italic; color: #333; font-size: 0.9em">
+      <%=education[i].schoolName%>,<%=education[i].schoolLocation%>,<%=education[i].state%>
+    </address>
+    <% } %>
+  </div>
+  <% } %>
+</div>

@@ -1,0 +1,59 @@
+<h1 style="text-align: center"><%= firstName %> <%= lastName %></h1>
+
+<div
+  id="address"
+  style="
+    height: 5em;
+    width: 48em;
+    padding: 1em;
+    height: 5em;
+    width: 48em;
+    padding: 1em;
+  "
+>
+  <div style="width: 16em; float: left">
+    <h3
+      style="
+        border-bottom: none;
+        font-variant: small-caps;
+        margin-top: 0;
+        margin-bottom: 0;
+      "
+    >
+      Local Address
+    </h3>
+    <%= address %><br />
+  </div>
+  <div id="first" style="width: 16em; float: left">
+    <h3
+      style="
+        margin-bottom: 0;
+        border-bottom: none;
+        font-variant: small-caps;
+        margin-top: 0;
+      "
+    >
+      Credentials
+    </h3>
+    <br />
+    <a><%=email %></a><br />
+    <a><%=phoneNo %></a>
+    <% if (links && links.length>0) { %> <% for(var i=0; i < links.length; i++)
+    { %>
+    <a><%= links[i] %></a>
+    <% } %> <% } %>
+  </div>
+  <div style="width: 16em; float: left">
+    <h3
+      style="
+        margin-bottom: 0;
+        border-bottom: none;
+        font-variant: small-caps;
+        margin-top: 0;
+      "
+    >
+      Permanent Address
+    </h3>
+    <%=address %> <br />
+  </div>
+</div>

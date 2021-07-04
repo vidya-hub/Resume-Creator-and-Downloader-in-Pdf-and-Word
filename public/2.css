@@ -1,0 +1,124 @@
+body {
+  color: #505050;
+  font-family: poppins;
+}
+.container {
+  width: 900px;
+  margin: auto;
+}
+.top {
+  width: 100%;
+}
+.main_div_name {
+  width: 370px !important;
+  border-spacing: 0;
+  text-align: center;
+  background-color: #333333;
+  padding: 40px;
+}
+.first_name {
+  text-transform: uppercase;
+  font-size: 42px;
+  color: #fff;
+  font-family: PT Serif;
+}
+.last_name {
+  text-transform: uppercase;
+  font-size: 42px;
+  color: #999999;
+  font-family: PT Serif;
+}
+.main_div_details {
+  width: 250px !important;
+  padding: 40px;
+  border-spacing: 0;
+  background-color: #00798a;
+}
+.position {
+  color: #fff;
+  font-size: 25px;
+  font-family: PT Serif;
+}
+.job_title {
+  font-family: PT Serif;
+  color: #86c6cc;
+  font-size: 22px;
+}
+
+.left {
+  width: 516px !important;
+  vertical-align: initial;
+  background-color: #fff;
+}
+.right {
+  background-color: #e6e6e6;
+  vertical-align: initial;
+}
+.list_left {
+  margin-top: 0;
+  text-align: justify;
+  padding-left: 15px;
+}
+.l_1 {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+.r_1 {
+  text-align: left;
+}
+.hdng_1 {
+  font-family: PT Serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 22px;
+  color: #fff;
+  background-color: #00798a;
+}
+.hdng2 {
+  font-size: 18px;
+  color: #1f8998;
+}
+.hdng3 {
+  font-size: 17px;
+  font-weight: 600;
+}
+/*.details_main
+{
+	padding: 10px 0;
+}*/
+.details {
+  padding: 0 40px;
+  margin-top: 10px;
+}
+.icon {
+  padding-right: 10px;
+}
+.summry {
+  text-align: justify;
+  padding-left: 0px;
+}
+.last {
+  border: none;
+}
+.r_1 .hdng_1 {
+  background-color: #434343;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+.compny_dtls {
+  width: 100%;
+  display: inline-flex;
+}
+.cmpny_dtls_sub {
+  text-align: left;
+  padding: 0 20px 0 0;
+  color: #7d96ba;
+}
+
+.envrmnt {
+  display: inline-flex;
+}
+.envrmnt_tag {
+  padding-right: 20px;
+}

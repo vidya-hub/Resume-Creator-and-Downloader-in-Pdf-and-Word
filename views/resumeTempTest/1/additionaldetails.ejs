@@ -1,0 +1,102 @@
+<% if (affiliations && affiliations.length > 0) { %>
+<div
+  class="section"
+  style="border-top: 1px solid #ccc; margin: 1em 0; padding: 1em"
+>
+  <h2
+    style="
+      width: 14em;
+      float: left;
+      font-size: 1em;
+      font-variant: small-caps;
+      letter-spacing: 0.06em;
+    "
+  >
+    Affiliations
+  </h2>
+  <div class="content" style="width: 32em; margin: 0 0 0 16em">
+    <ul style="padding-left: 0.5em; margin-left: 0.5em">
+      <% for(var i=0; i < affiliations.length; i++) { %>
+      <li><%=affiliations[i]%></li>
+      <% } %>
+    </ul>
+  </div>
+</div>
+<% } %> <% if (certifications && certifications.length>0) { %>
+<div
+  class="section"
+  style="border-top: 1px solid #ccc; margin: 1em 0; padding: 1em"
+>
+  <h2
+    style="
+      width: 14em;
+      float: left;
+      font-size: 1em;
+      font-variant: small-caps;
+      letter-spacing: 0.06em;
+    "
+  >
+    Certifications
+  </h2>
+  <div class="content" style="width: 32em; margin: 0 0 0 16em">
+    <ul style="padding-left: 0.5em; margin-left: 0.5em">
+      <% for(var i=0; i < certifications.length; i++) { %>
+      <li><%=certifications[i]%></li>
+      <% } %>
+    </ul>
+  </div>
+</div>
+<% } %> <% if (additionalInformation && additionalInformation.length>0) { %>
+<div
+  class="section"
+  style="border-top: 1px solid #ccc; margin: 1em 0; padding: 1em"
+>
+  <h3
+    style="
+      width: 14em;
+      float: left;
+      font-size: 1em;
+      font-variant: small-caps;
+      letter-spacing: 0.06em;
+    "
+  >
+    Additional Details
+  </h3>
+  <div class="content">
+    <ul style="padding-left: 0.5em; margin-left: 0.5em">
+      <% for(var i=0; i < additionalDetails.length; i++) { %>
+      <li style="padding-left: 0.5em; margin-left: 0.5em">
+        <%=additionalDetails[i].key%>:- <%=additionalDetails[i].value%>
+      </li>
+      <% } %>
+    </ul>
+  </div>
+</div>
+<% } %> <% if (refrences && refrences.length>0) { %>
+<div
+  class="section"
+  style="border-top: 1px solid #ccc; margin: 1em 0; padding: 1em"
+>
+  <h3
+    style="
+      width: 14em;
+      float: left;
+      font-size: 1em;
+      font-variant: small-caps;
+      letter-spacing: 0.06em;
+    "
+  >
+    References
+  </h3>
+  <div class="content">
+    <% for(var i=0; i < refrences.length; i++) { %>
+    <tr>
+      <h4 style="margin-bottom: 0">
+        <%= refrences[i].name %> <%=refrences[i].position%>
+      </h4>
+      <address><%=refrences[i].phone%>,<%=refrences[i].email%></address>
+    </tr>
+    <% } %>
+  </div>
+</div>
+<% } %>

@@ -1,264 +1,270 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <style type="text/css" media="print">
+      html {
+        zoom: 0.6;
+      }
+    </style>
+    <title>2nd</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="http://206.189.131.247/poppins.css"
+    />
+    <link rel="stylesheet" type="text/css" href="http://206.189.131.247/1.css""
+    /> <link rel="stylesheet" type="text/css"
+    href="http://206.189.131.247/2.css"" /> <link rel="stylesheet"
+    type="text/css" href="http://206.189.131.247/all.css"" />
+  </head>
 
-<head>
-    <title>
-        2nd
-    </title>
-    <link rel="stylesheet" type="text/css" href="http://165.227.248.244:3001/poppins.css">
-    <link rel="stylesheet" type="text/css" href="http://165.227.248.244:3001/2.css">
-</head>
-<link rel="stylesheet" type="text/css" href="http://165.227.248.244:3001/all.css">
-</head>
-
-<body>
+  <body>
     <div class="container">
-        <table class="top">
-            <tr>
-                <td class="main_div_name ">
-                    <div>
-                        <div class="first_name"><%= firstName %></div>
-                        <div class="last_name"><%= lastName %></div>
-                    </div>
-                </td>
-                <!-- <td class="main_div_details">
+      <table class="top">
+        <tr>
+          <td class="main_div_name">
+            <div>
+              <div class="first_name"><%= firstName %></div>
+              <div class="last_name"><%= lastName %></div>
+            </div>
+          </td>
+          <!-- <td class="main_div_details">
     			<div class="position">BUSINESS ANALYST</div>
     			<div class="job_title">job title</div>
     		</td> -->
-            </tr>
-        </table>
-        <table class="main_table_th" style="width: 100%; border-spacing: 0; ">
-            <tr>
-                <th class="left" style="border-top: 0;">
-                    <% if (summary && summary.length>0) { %>
-                    <div class="l_1">
-
-                        <div class="hdng_1">PROFESSIONAL SUMMARY</div>
-                        <div class="details_main">
-                            <div class="details">
-                                <ul class="summry">
-                                    <% for(var i=0; i < summary.length; i++) { %>
-                                    <li><%=summary[i]%></li>
-                                    <%}%>	</ul>
-							</div>
-						</div>	
-
-
-						
-                    </div>
+        </tr>
+      </table>
+      <table class="main_table_th" style="width: 100%; border-spacing: 0">
+        <tr>
+          <th class="left" style="border-top: 0">
+            <% if (objectives && objectives.length>0) { %>
+            <div class="l_1" style="padding-left: 0px; padding-right: 0px">
+              <div class="hdng_1">OBJECTIVES</div>
+              <div class="details_main">
+                <div class="details">
+                  <ul class="summry">
+                    <% for(var i=0; i < objectives.length; i++) { %>
+                    <li><%=objectives[i]%></li>
                     <%}%>
-                                    <% if (workHistory && workHistory.length>0) { %>
-                                    <div class="l_1">
-
-                                        <div class="hdng_1">PROFESSIONAL EXPERIENCE:</div>
-                                    </div>
-                                    <% for(var i=0; i < workHistory.length; i++) { %>
-                                    <div class="l_1">
-
-
-                                        <div class="details_main">
-                                            <div class="compny_dtls ">
-                                                <div class="cmpny_dtls_sub"><%=workHistory[i].employer%></div>
-                                                <div class="cmpny_dtls_sub"><%=workHistory[i].country%></div>
-                                                <div class="cmpny_dtls_sub">
-                                                    <%= new Date(workHistory[i].startDate).getMonth() + 1 +'/'+new Date(workHistory[i].startDate).getFullYear() %>
-                                                                        to
-                                                                        <% if (workHistory[i].currentlyWorkHere) { %>
-                                                                        <span>Currant </span>
-                                                                        <% } %>
-                                                                        <% if (!workHistory[i].currentlyWorkHere) { %>
-                                                                        <span><%= new Date(workHistory[i].endDate).getMonth() + 1 +'/'+new Date(workHistory[i].endDate).getFullYear() %></span>
-                                                                        <% } %>
-                                                </div>
-
-                                            </div>
-                                            <div class="cmpny_dtls_sub"><%=workHistory[i].jobTitle%></div>
-                                           
-                                        </div>
-
-
-                                    </div>
-                                    <% if (workHistory[i] && workHistory[i].responsibility.length>0) { %>
-                                    <div class="l_1">
-                                        <div class="hdng2">Responsibilities:</div>
-                                        <div class="details_main">
-                                            <div class="details">
-                                                <ul class="summry">
-                                                    <% for(var j=0; j < workHistory[i].responsibility.length; j++) { %>
-                                                        <li><%= workHistory[i].responsibility[j] %> </li>
-                                                            <%}%>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <%}%>
-                                    <% if (workHistory[i] && workHistory[i].environment.length>0) { %>
-                                        <div class="l_1">
-                                            <div class="hdng2">Environment:</div>
-                                            <div class="details_main">
-                                                <div class="details">
-                                                    <ul class="summry">
-                                                        <% for(var j=0; j < workHistory[i].environment.length; j++) { %>
-                                                            <li><%= workHistory[i].environment[j] %> </li>
-                                                                <%}%>
-                                                    </ul>
-                                                </div>
-                                            </div>
-    
-                                        </div>
-                                        <%}%>
-                                  
-                                    <%}%>
-                                    <%}%>
-                                    <% if (education && education.length>0) { %>
-					<div class="l_1">
-						<div class="hdng_1">EDUCATION: </div>
-						<div class="details_main">
-							<div class="details">
-								<ol class="summry">
-                                    <% for(var i=0; i < education.length; i++) { %>
-
-                                        <li> <%= education[i].degree %>,<%=education[i].fieldOfStudy%>,<%=education[i].schoolLocation%>
-                                        </li>
-                                        <%}%>
-                                </ol>
-							</div>
-						</div>
-							
-                    </div>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <%}%> <% if (summary && summary.length>0) { %>
+            <div class="l_1" style="padding-left: 0px; padding-right: 0px">
+              <div class="hdng_1">PROFESSIONAL SUMMARY</div>
+              <div class="details_main">
+                <div class="details">
+                  <ul class="summry">
+                    <% for(var i=0; i < summary.length; i++) { %>
+                    <li><%=summary[i]%></li>
                     <%}%>
-					
-
-				</th>
-				<th class="right" style="border-top: 0; border-left: 0;">
-					<div class="r_1">
-						<div class="hdng_1">Personal Details</div>
-						<div class="details_main">
-
-							<div class="details">
-								<i class="icon fas fa-birthday-cake"></i><%= birthDate %>
-							</div>
-							<div class="details">
-                                <i class="icon fas fa-phone-alt"></i>
-                                <% if (phoneNo && phoneNo.length>0) { %>
-                                    <%= phoneNo %><br />
-                                    <%}%>
-							</div>
-							<div class="details">
-								<i class="icon fas fa-envelope"></i><% if (email && email.length>0) { %>
-                                    <%= email %><br />
-                                    <%}%>
-							</div>
-							<div class="details">
-								<i class="icon fas fa-map-marker-alt"></i> <% if (address && address.length>0) { %>
-                                    <%= address %><br />
-                                    <%}%>
-							</div>
-						</div>	
-					</div>
-					
-					<div class="r_1 last">
-						<div class="hdng_1">EXECUTIVE SUMMARY</div>
-						<div class="details_main">
-							<div class="details">
-								<ul class="list_left">
-									<li>   <%=professionalSummary%></li></li>
-								</ul>
-							</div>
-						</div>			
-                    </div>
-                    <% if (skills && skills.length>0) { %>
-					<div class="r_1">
-						<div class="hdng_1">Technical skills: </div>						
-						<div class="details_main">
-							<div class="details">
-								<ul class="list_left">
-                                    <% for(var i=0; i < skills.length; i++) { %>
-                                        <li><%=skills[i]%></li>
-                                        <% } %>
-								</ul>
-							</div>
-						</div>	
-                    </div>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <%}%> <% if (workHistory && workHistory.length>0) { %>
+            <div class="l_1" style="padding-left: 0px; padding-right: 0px">
+              <div class="hdng_1">PROFESSIONAL EXPERIENCE:</div>
+            </div>
+            <% for(var i=0; i < workHistory.length; i++) { %>
+            <div class="l_1" style="padding-left: 20px; padding-right: 0px">
+              <div class="details_main">
+                <div class="compny_dtls">
+                  <div class="cmpny_dtls_sub"><%=workHistory[i].employer%></div>
+                  <div class="cmpny_dtls_sub"><%=workHistory[i].country%></div>
+                  <div class="cmpny_dtls_sub">
+                    <%= new Date(workHistory[i].startDate).getMonth() + 1
+                    +'/'+new Date(workHistory[i].startDate).getFullYear() %> to
+                    <% if (workHistory[i].currentlyWorkHere) { %>
+                    <span>Current </span>
+                    <% } %> <% if (!workHistory[i].currentlyWorkHere) { %>
+                    <span
+                      ><%= new Date(workHistory[i].endDate).getMonth() + 1
+                      +'/'+new Date(workHistory[i].endDate).getFullYear()
+                      %></span
+                    >
+                    <% } %>
+                  </div>
+                </div>
+                <div class="cmpny_dtls_sub"><%=workHistory[i].jobTitle%></div>
+              </div>
+            </div>
+            <% if (workHistory[i] && workHistory[i].responsibility.length>0) {
+            %>
+            <div class="l_1" style="padding-left: 20px; padding-right: 0px">
+              <div class="hdng2">Responsibilities:</div>
+              <div class="details_main">
+                <div class="details">
+                  <ul class="summry">
+                    <% for(var j=0; j < workHistory[i].responsibility.length;
+                    j++) { %>
+                    <li><%= workHistory[i].responsibility[j] %></li>
                     <%}%>
-					<% if (certifications && certifications.length>0) { %>
-					<div class="r_1">
-						<div class="hdng_1">Certification</div>
-						<div class="dsgn"></div>
-						<div class="details_main">
-							<div class="details">
-								<ol class="list_left"> 
-									<% for(var i=0; i < certifications.length; i++) { %>
-                                        <li><%=certifications[i]%></li>
-                                        <% } %>
-								</ol>
-							</div>
-						</div>	
-					</div>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <%}%> <% if (workHistory[i] && workHistory[i].environment.length>0)
+            { %>
+            <div class="l_1" style="padding-left: 20px; padding-right: 0px">
+              <div class="hdng2">Environment:</div>
+              <div class="details_main">
+                <div class="details">
+                  <ul class="summry">
+                    <% for(var j=0; j < workHistory[i].environment.length; j++)
+                    { %>
+                    <li><%= workHistory[i].environment[j] %></li>
                     <%}%>
-                    <% if (affiliations && affiliations.length>0) { %>
-					<div class="r_1">
-						<div class="hdng_1">Affiliations</div>
-						<div class="dsgn"></div>
-						<div class="details_main">
-							<div class="details">
-								<ul class="list_left">
-									<% for(var i=0; i < affiliations.length; i++) { %>
-                                        <li><%=affiliations[i]%></li>
-                                        <% } %>
-								</ul>
-							</div>
-						</div>	
-                    </div>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <%}%> <%}%> <%}%> <% if (education && education.length>0) { %>
+            <div class="l_1" style="padding-left: 0px; padding-right: 0px">
+              <div class="hdng_1">EDUCATION:</div>
+              <div class="details_main">
+                <div class="details">
+                  <ol class="summry">
+                    <% for(var i=0; i < education.length; i++) { %>
+
+                    <li>
+                      <%= education[i].degree
+                      %>,<%=education[i].fieldOfStudy%>,<%=education[i].schoolLocation%>
+                    </li>
                     <%}%>
-                    <% if (accomplishments && accomplishments.length>0) { %>
-					<div class="r_1">
-							<div class="hdng_1">accomplishment</div>
-						<div class="details_main">
-							<div class="details">
-								<ul class="list_left">
-                                    <% for(var i=0; i < accomplishments.length; i++) { %>
-                                        <li><%=accomplishments[i]%></li>
-                                        <%}%>	</ul>
-							</div>
-						</div>
-                    </div>
+                  </ol>
+                </div>
+              </div>
+            </div>
+            <%}%>
+          </th>
+          <th class="right" style="border-top: 0; border-left: 0">
+            <div class="r_1" style="padding-left: 0px; padding-right: 0px">
+              <div class="hdng_1">Personal Details</div>
+              <div class="details_main">
+                <div class="details">
+                  <i class="icon fas fa-birthday-cake"></i><%= birthDate %>
+                </div>
+                <div class="details">
+                  <i class="icon fas fa-phone-alt"></i>
+                  <% if (phoneNo && phoneNo.length>0) { %> <%= phoneNo %><br />
+                  <%}%>
+                </div>
+                <div class="details">
+                  <i class="icon fas fa-envelope"></i><% if (email &&
+                  email.length>0) { %> <%= email %><br />
+                  <%}%>
+                </div>
+                <div class="details">
+                  <i class="icon fas fa-map-marker-alt"></i> <% if (address &&
+                  address.length>0) { %> <%= address %><br />
+                  <%}%>
+                </div>
+              </div>
+            </div>
+
+            <div class="r_1 last" style="padding-left: 0px; padding-right: 0px">
+              <div class="hdng_1">EXECUTIVE SUMMARY</div>
+              <div class="details_main">
+                <div class="details">
+                  <ul class="list_left">
+                    <li><%=professionalSummary%></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <% if (skills && skills.length>0) { %>
+            <div class="r_1" style="padding-left: 0px; padding-right: 0px">
+              <div class="hdng_1">Technical skills:</div>
+              <div class="details_main">
+                <div class="details">
+                  <ul class="list_left">
+                    <% for(var i=0; i < skills.length; i++) { %>
+                    <li><%=skills[i]%></li>
+                    <% } %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <%}%> <% if (certifications && certifications.length>0) { %>
+            <div class="r_1" style="padding-left: 0px; padding-right: 0px">
+              <div class="hdng_1">Certification</div>
+              <div class="dsgn"></div>
+              <div class="details_main">
+                <div class="details">
+                  <ol class="list_left">
+                    <% for(var i=0; i < certifications.length; i++) { %>
+                    <li><%=certifications[i]%></li>
+                    <% } %>
+                  </ol>
+                </div>
+              </div>
+            </div>
+            <%}%> <% if (affiliations && affiliations.length>0) { %>
+            <div class="r_1" style="padding-left: 0px; padding-right: 0px">
+              <div class="hdng_1">Affiliations</div>
+              <div class="dsgn"></div>
+              <div class="details_main">
+                <div class="details">
+                  <ul class="list_left">
+                    <% for(var i=0; i < affiliations.length; i++) { %>
+                    <li><%=affiliations[i]%></li>
+                    <% } %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <%}%> <% if (accomplishments && accomplishments.length>0) { %>
+            <div class="r_1" style="padding-left: 0px; padding-right: 0px">
+              <div class="hdng_1">accomplishment</div>
+              <div class="details_main">
+                <div class="details">
+                  <ul class="list_left">
+                    <% for(var i=0; i < accomplishments.length; i++) { %>
+                    <li><%=accomplishments[i]%></li>
                     <%}%>
-                    <% if (refrences && refrences.length>0) { %>
-					<div class="r_1">
-						<div class="hdng_1">References: </div>
-						<div class="details_main">
-							<div class="details">
-								<ol class="summry">
-                                    <% for(var i=0; i < refrences.length; i++) { %>
-                                        <% if (refrences[i] && refrences[i].name) { %>
-                                        <li>
-                                            <%=refrences[i].name%> ,
-                                            <% if (refrences[i] && refrences[i].position) { %>
-                                            <%=refrences[i].position%> ,
-                                            <% } %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <%}%> <% if (refrences && refrences.length>0) { %>
+            <div class="r_1" style="padding-left: 0px; padding-right: 0px">
+              <div class="hdng_1">References:</div>
+              <div class="details_main">
+                <div class="details">
+                  <ol class="summry">
+                    <% for(var i=0; i < refrences.length; i++) { %> <% if
+                    (refrences[i] && refrences[i].name) { %>
+                    <li>
+                      <%=refrences[i].name%> , <% if (refrences[i] &&
+                      refrences[i].position) { %> <%=refrences[i].position%> ,
+                      <% } %> <% if (refrences[i] && refrences[i].email) { %>
+                      <%=refrences[i].email%> , <% } %> <% if (refrences[i] &&
+                      refrences[i].phone) { %> <%=refrences[i].phone%> <% } %>
+                    </li>
 
-                                            <% if (refrences[i] && refrences[i].email) { %>
-                                            <%=refrences[i].email%> ,
-                                            <% } %>
+                    <% } %> <% } %>
+                  </ol>
+                </div>
+              </div>
+            </div>
+            <%}%> <% if (additionalDetails && additionalDetails.length>0) { %>
+            <div class="r_1" style="padding-left: 0px; padding-right: 0px">
+              <div class="hdng_1">Additional Details:</div>
+              <div class="details_main"></div>
+              <div class="details">
+                <% for(var i=0; i < additionalDetails.length; i++) { %>
+                <li><%=additionalDetails[i].key%></li>
+                <h5><%=additionalDetails[i].value%></h5>
+                <%}%>
+              </div>
+            </div>
 
-                                            <% if (refrences[i] && refrences[i].phone) { %>
-                                            <%=refrences[i].phone%>
-                                            <% } %>
-
-                                        </li>
-
-                                        <% } %>
-                                        <% } %>
-								</ol>
-							</div>
-						</div>							
-                    </div>
-                    <%}%>
-				</th> 
-			</tr>
-		</table>	
-	</div>
-</body>
+            <%}%>
+          </th>
+        </tr>
+      </table>
+    </div>
+  </body>
 </html>

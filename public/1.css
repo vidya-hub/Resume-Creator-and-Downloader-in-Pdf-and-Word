@@ -1,0 +1,134 @@
+body
+{
+	color: #373737;
+	font-family: poppins;
+}
+.container
+{
+	width: 900px;
+	margin: auto;
+}
+.top_main
+{
+	border:40px solid #eaceb8;
+}
+.top_sub
+{
+	border:3px solid #000;
+	margin: 15px; 
+}
+.name
+{
+	font-family: PT Serif;
+	padding-top: 20px; 
+	margin: auto;
+	text-align: center;
+	font-size: 40px;
+}
+.compny_dtls
+{
+	width: 100%;
+	display: inline-flex;
+}
+.cmpny_dtls_sub
+{
+	padding: 0 30px 0 0;
+	color: #7d96ba;
+}
+.post
+{
+	text-align: center;
+	padding-top: 10px;
+	font-size: 20px;
+	padding-bottom: 16px;
+	letter-spacing: 1px;
+	color:#768ba6;
+	font-family: sans-serif;
+	text-transform: uppercase;
+}
+.left
+{
+	width: 30%;
+	vertical-align: initial;
+	background-color: #dae3ec;
+}
+.right
+{
+	vertical-align: initial;
+}
+.compny_dtls 
+{
+	padding-top: 20px;
+}
+.list_left
+{
+	margin-top: 0;
+	color: #7d96ba;
+	text-align: justify;
+	padding-left: 15px;
+}
+.l_1,.r_1
+{
+	padding:0 40px 0px 40px ;
+	text-align: left;
+	border-bottom: 3px solid #000;
+}
+.hdng_1
+{
+	font-family: PT Serif;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-size: 22px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+.hdng2
+{
+	font-size: 19px;
+	color: #000;
+}
+.hdng3
+{
+	font-size: 17px;
+	font-weight: 600;
+}
+.envrmnt_tag
+{
+	padding-right: 20px;
+}
+.dsgn
+{
+	height: 2px;
+	width: 50px;
+	background-color: #7d96ba;
+	margin-bottom: 10px;
+}
+.details
+{
+	margin-top: 10px;
+}
+.icon
+{
+	color:#7d96ba;
+	padding-right: 10px;
+}
+.r_1
+{
+	background-color: #fff;
+}
+.summry
+{
+	text-align: justify;
+	padding-left: 20px;
+}
+.last
+{
+	border-bottom:none;
+}
+.envrmnt
+{
+	display: inline-flex;
+}
+ td, th {
+  border: 3px solid black;
+}

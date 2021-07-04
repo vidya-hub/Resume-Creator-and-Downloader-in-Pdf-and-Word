@@ -1,0 +1,23 @@
+{
+    "status": "success",
+    "msg": "",
+    "data": [
+        {
+            "title": "Innovative Android Developer with  years of experience designing, developing, testing, and maintaining Android applications in the sports entertainment industry. Built core features for app with many downloads.",
+            "status": 1,
+            "_id": "5d5a45805cf3c85d100ed242",
+            "jobtitle":"5d53924fdfb2d92e3499e6de",
+            "addTime": 1566197120536,
+            "__v": 0
+        },
+        {
+            "title": "Creative and driven Lead Android Developer with many years of experience architecting and building cutting-edge Android apps for mobile devices in the e-commerce, insurance, and car rental industries.",
+            "status": 1,
+            "_id": "5d5a45a95cf3c85d100ed243",
+            "jobtitle":"5d53924fdfb2d92e3499e6de",
+            "addTime": 1566197161590,
+            "__v": 0
+        }
+    ],
+    "method": "get_all_summary"
+}

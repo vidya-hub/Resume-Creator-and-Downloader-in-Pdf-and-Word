@@ -1,0 +1,49 @@
+<% if (workHistory && workHistory.length>0) { %>
+
+<div
+  class="section"
+  style="border-top: 1px solid #ccc; margin: 1em 0; padding: 1em"
+>
+  <h2
+    style="
+      width: 14em;
+      float: left;
+      font-size: 1em;
+      font-variant: small-caps;
+      letter-spacing: 0.06em;
+    "
+  >
+    Work Experience
+  </h2>
+
+  <div class="content" style="width: 32em; margin: 0 0 0 16em">
+    <% for( let i = 0; i < workHistory.length; i++ ) { %>
+
+    <span
+      class="date"
+      style="
+        float: right;
+        font-size: 0.8em;
+        margin-top: 0.4em;
+        text-align: right;
+      "
+      ><%= workHistory[i].startDate %> &raquo; <%= workHistory[i].endDate
+      %></span
+    >
+    <h3 style="margin-bottom: 0">Job Title <%= i %></h3>
+    <address style="font-style: italic; color: #333; font-size: 0.9em">
+      <%=workHistory[i].employer%>,<%=workHistory[i].city%>,<%=workHistory[i].state%>
+    </address>
+    <% if (workHistory[i].environment && workHistory[i].environment.length>0) {
+    %>
+
+    <ul style="padding-left: 0.5em; margin-left: 0.5em">
+      <% for( let j = 0; j < workHistory[i].environment.length; j++ ) { %>
+      <li><%= workHistory[i].environment[j] %></li>
+      <% } %>
+    </ul>
+    <% } %> <% } %>
+  </div>
+
+  <% } %>
+</div>

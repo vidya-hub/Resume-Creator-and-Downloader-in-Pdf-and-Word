@@ -9,6 +9,8 @@ const { response } = require('express');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('views', __dirname + '/views');
+var pdf = require('html-pdf');
+
 app.engine('html', require('ejs').renderFile);
 var http = require('http'),
     fs = require('fs'),
@@ -17,41 +19,13 @@ let ejs = require("ejs");
 let path = require("path");
 app.set('view engine', 'ejs');
 const HTMLtoDOCX = require('html-to-docx');
-const filePath = './example.docx';
+const filePath = './' + (Math.random().toString(36).substring(2, 16) + Math.random().toString(36).substring(2, 10)).toUpperCase() + ".docx";
+var worldMapData = require('city-state-country');
+
 
 var fs = require('fs');
-
-
-function convertWord(htmlString){
-     // // var client = new grabzit("OGMyYzcwMzViNmZlNDg2ZGI0MmE1Y2ZmZDI2NDY0ODU=", "WVgsZT8/XXs/PwQ/Pz8KfV5SPz8zEz95Pz8/LVg/Pz8=");
-            // // client.html_to_docx(data);
-            // // client.save_to(docfullname, function (error, id) {
-            // //     if (id == null) {
-            // //         fs.readFile(docfullname, function (err, content) {
-            // //             if (err) {
-            // //                 res.writeHead(400, { 'Content-type': 'text/html' })
-            // //                 console.log(err);
-            // //                 res.end("No such file");
-            // //             } else {
-            // //                 //specify the content type in the response will be an image
-            // //                 res.writeHead(200, {
-            // //                     'Content-Type': "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-            // //                     'Content-disposition': 'attachment;filename=' + docfullname,
-            // //                 });
-            // //                 res.end(content);
-            // //             }
-            // //         });
-            // //         fs.unlink(docfullname, function (err) {
-            // //             if (err) throw err;
-            // //             console.log('file deleted');
-            // //         });
-            // //     }
-            // //     if (error != null) {
-            // //         throw error;
-            // //     }
-            // });
-}
-
+const { error } = require('console');
+const html_Docx = require('html-docx-js');
 
 function exportHTML(htmldata) {
     // var sourceHTML = header+document.getElementById("source-html").innerHTML+footer;
@@ -74,151 +48,221 @@ app.use(session);
 
 app.use(express.static('./'));
 var resdata = {
-    firstName: "Vidya Sagar",
-    lastName: "Mavuduru",
-    address: "Burja Village",
-    phoneNo: "132345",
-    email: "vidya@gmail.com",
-    links: ["Vidya Sagar", "No on is there"],
-    professionalSummary: "Vidya is a nice person",
-    skills: ["Flutter Developer", "Node js", "Python"],
+    listOfContent: ["./personal", "./education", "./workhistory", "./additionaldetails", "./objective", "./skills", "./summary",],
+    firstName: "First Name",
+    lastName: "Last Name",
+    address: "ries of prompts where you can make some ",
+    phoneNo: "Phone no",
+    email: "Email Address",
+    links: ["Social Media Links", "Professional Links"],
+    professionalSummary: "This will take you through a series of prompts where you can make some changes to your MySQL installation’s security options. The first prompt will ask whether you’d like to set up the Validate Password Plugin, which can be used to test the strength of your MySQL password. Regardless of your choice, the next prompt will be to set a password for the MySQL root user. Enter and then confirm a secure password of your choice.\ From there, you can press Y and then ENTER to accept the defaults for all the subsequent questions. This will remove some anonymous users and the test database, disable remote root logins, and load these new rules so that MySQL immediately respects the changes you have made.   To initialize the MySQL data directory, you would use mysql_install_db for versions before 5.7.6, and mysqld --initialize for 5.7.6 and later. However, if you installed MySQL from the Debian distribution, as described in Step 1",
+    skills: ["Skills 2lslfcsbfvjsb", "Skills 2lslfcsbfvjsb", "Skills 2lslfcsbfvjsb", "Skills 2lslfcsbfvjsb", "Skills 2lslfcsbfvjsb", "Skills 2lslfcsbfvjsb",],
+    city: "City",
+    state: "state",
+    zipCode: "Zip Code",
     workHistory: [
         {
-            "startDate": "2020-12-01",
-            "currentlyWorkHere": "Burja",
-            "enddate": "2020-12-01",
+            "startDate": parseInt('1562005800000', 10),
+            "jobTitle": "jobtitile",
+            "endDate": parseInt('1562005800000', 10),
+            "employer": "test Employee",
+            "currentlyWorkHere": "Work Details",
             "city": "srikakulam",
             "state": "Andhra Pradesh",
-            "responsibility": ["this was my res"],
-            "environment": ["environment", "java", "python"]
+            "country": "INdia",
+            "responsibility": ["Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.Created and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Work Responsibilities"],
+            "environment": ["dart", "java", "python"]
         },
-
+        {
+            "startDate": parseInt('1562005800000', 10),
+            "jobTitle": "jobtitile",
+            "endDate": parseInt('1562005800000', 10),
+            "employer": "test Employee",
+            "currentlyWorkHere": "Work Details",
+            "city": "srikakulam",
+            "state": "Andhra Pradesh",
+            "country": "INdia",
+            "responsibility": ["Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.Created and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Work Responsibilities"],
+            "environment": ["dart", "java", "python"]
+        }, {
+            "startDate": parseInt('1562005800000', 10),
+            "jobTitle": "jobtitile",
+            "endDate": parseInt('1562005800000', 10),
+            "employer": "test Employee",
+            "currentlyWorkHere": "Work Details",
+            "city": "srikakulam",
+            "state": "Andhra Pradesh",
+            "country": "INdia",
+            "responsibility": ["Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.Created and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Work Responsibilities"],
+            "environment": ["dart", "java", "python"]
+        }, {
+            "startDate": parseInt('1562005800000', 10),
+            "jobTitle": "jobtitile",
+            "endDate": parseInt('1562005800000', 10),
+            "employer": "test Employee",
+            "currentlyWorkHere": "Work Details",
+            "city": "srikakulam",
+            "state": "Andhra Pradesh",
+            "country": "INdia",
+            "responsibility": ["Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.Created and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Work Responsibilities"],
+            "environment": ["dart", "java", "python"]
+        },
 
     ],
     objectives: [
-        "object 1",
-        "object 2",
+        "This will take you through a series of prompts where you can make some changes to your MySQL installation’s security options. The first prompt will ask whether you’d like to set up the Validate Password Plugin, which can be used to test the strength of your MySQL password. Regardless of your choice, the next prompt will be to set a password for the MySQL root user. Enter and then confirm a secure password of your choice.\ From there, you can press Y and then ENTER to accept the defaults for all the subsequent questions. This will remove some anonymous users and the test database, disable remote root logins, and load these new rules so that MySQL immediately respects the changes you have made.   To initialize the MySQL data directory, you would use mysql_install_db for versions before 5.7.6, and mysqld --initialize for 5.7.6 and later. However, if you installed MySQL from the Debian distribution, as described in Step 1, the data directory was initialized automatically; you don’t have to do anything. If you try running the command anyway, you’ll see the following error:This will take you through a series of prompts where you can make some changes to your MySQL installation’s security options. The first prompt will ask whether you’d like to set up the Validate Password Plugin, which can be used to test the strength of your MySQL password. Regardless of your choice, the next prompt will be to set a password for the MySQL root user. Enter and then confirm a secure password of your choice.From there, you can press Y and then ENTER to accept the defaults for all the subsequent questions. This will remove some anonymous users and the test database, disable remote root logins, and load these new rules so that MySQL immediately respects the changes you have made.   To initialize the MySQL data directory, you would use mysql_install_db for versions before 5.7.6, and mysqld --initialize for 5.7.6 and later. However, if you installed MySQL from the Debian distribution, as described in Step 1, the data directory was initialized automatically; you don’t have to do anything. If you try running the command anyway, you’ll see the following error:",
+        "This will take you through a series of prompts where you can make some changes to your MySQL installation’s security options. The first prompt will ask whether you’d like to set up the Validate Password Plugin, which can be used to test the strength of your MySQL password. Regardless of your choice, the next prompt will be to set a password for the MySQL root user. Enter and then confirm a secure password of your choice.\ From there, you can press Y and then ENTER to accept the defaults for all the subsequent questions. This will remove some anonymous users and the test database, disable remote root logins, and load these new rules so that MySQL immediately respects the changes you have made.   To initialize the MySQL data directory, you would use mysql_install_db for versions before 5.7.6, and mysqld --initialize for 5.7.6 and later. However, if you installed MySQL from the Debian distribution, as described in Step 1, the data directory was initialized automatically; you don’t have to do anything. If you try running the command anyway, you’ll see the following error:",
+        "This will take you through a series of prompts where you can make some changFrom there, you can press Y and then ENTER to accept the defaults for all the subsequent questions. This will remove some anonymous users and the test database, disable remote root logins, and load these new rules so that MySQL immediately respects the changes you have made.   To initialize the MySQL data directory, you would use mysql_install_db for versions before 5.7.6, and mysqld --initialize for 5.7.6 and later. However, if you installed MySQL from the Debian distribution, as described in Step 1, the data directory was initialized automatically; you don’t have to do anything. If you try running the command anyway, you’ll see the following error:",
+
 
     ],
+    additionalInformation: [{
+        title: "title 1",
+        description: "description"
+    }, {
+        title: "title 2",
+        description: "descriptions"
+    },],
+    additionalDetails: [{
+        key: "title 1",
+        value: "description"
+    }, {
+        key: "title 2",
+        value: "descriptions nnsnns"
+    },],
     birthDate: "1999-24-08",
     education: [
         {
             "fieldOfStudy": "10 th ",
             "degree": "ssc",
             "graduationYear": 2014,
-            "schoolName": "ZPH school",
-            "schoolLocation": "Burja",
-            "state": "ANDHRA PRADESH"
-        }
+            "schoolName": "School Name",
+            "schoolLocation": "School Location",
+            "state": "State Details"
+        },
+        {
+            "fieldOfStudy": "10 th ",
+            "degree": "ssc",
+            "graduationYear": 2014,
+            "schoolName": "School Name",
+            "schoolLocation": "School Location",
+            "state": "State Details"
+        },
+        {
+            "fieldOfStudy": "10 th ",
+            "degree": "ssc",
+            "graduationYear": 2014,
+            "schoolName": "School Name",
+            "schoolLocation": "School Location",
+            "state": "State Details"
+        }, {
+            "fieldOfStudy": "10 th ",
+            "degree": "ssc",
+            "graduationYear": 2014,
+            "schoolName": "School Name",
+            "schoolLocation": "School Location",
+            "state": "State Details"
+        }, {
+            "fieldOfStudy": "10 th ",
+            "degree": "ssc",
+            "graduationYear": 2014,
+            "schoolName": "School Name",
+            "schoolLocation": "School Location",
+            "state": "State Details"
+        }, {
+            "fieldOfStudy": "10 th ",
+            "degree": "ssc",
+            "graduationYear": 2014,
+            "schoolName": "School Name",
+            "schoolLocation": "School Location",
+            "state": "State Details"
+        },
     ],
-    accomplishments: [
-        "Done 2 internships",
-        "Done 2 internships",
-        "Done 2 internships",
+    accomplishments: ["This will take you through a series of prompts where you can make some changes to your MySQL installation’s ",
+        "This will take you through a series of prompts where you can make some changes to your MySQL installation’s  2",
     ],
     affiliations: [
-        "no appliations",
-        "no appliations",
+        "This will take you through a series of prompts where you can make some changes to your MySQL installation’s ",
+        "This will take you through a series of prompts where you can make some changes to your MySQL installation’s  2",
     ],
     refrences: [{
-        "name": "vidya",
-        "position": "dev",
+        "name": "Reference Details",
+        "position": "position",
         "email": "@gmail",
         "phone": "1234567989"
-    }],
+    }, {
+        "name": "Reference Details",
+        "position": "position",
+        "email": "@gmail",
+        "phone": "1234567989"
+    }, {
+        "name": "Reference Details",
+        "position": "position",
+        "email": "@gmail",
+        "phone": "1234567989"
+    }, {
+        "name": "Reference Details",
+        "position": "position",
+        "email": "@gmail",
+        "phone": "1234567989"
+    }, {
+        "name": "Reference Details",
+        "position": "position",
+        "email": "@gmail",
+        "phone": "1234567989"
+    },],
     certifications: [
-        "two of then",
-        "two of then",
-        "two of then",
-
-    ],
-    additionalInformation: [
-        {
-            "title": "The Achivement no 1",
-            "description": "The Achivement no description",
-
-        },
+        "Certifications 1",
+        "Certifications 2",
+        "Certifications 3",
+        "Certifications 1",
+        "Certifications 2",
+        "Certifications 3", "Certifications 1",
+        "Certifications 2",
+        "Certifications 3", "Certifications 1",
+        "Certifications 2",
+        "Certifications 3", "Certifications 1",
+        "Certifications 2",
+        "Certifications 3",
     ],
     summary: [
         "Nice on acctually",
         "Nice on acctually",
 
     ],
-    namevalue: "vidya"
+    namevalue: "NOthing"
 }
+resdata.valie = ["bsbfs", "bbsfb"];
+// console.log(resdata);
+// resdata.set()
 
 function timeout(ms) { //pass a time in milliseconds to this function
     return new Promise(resolve => setTimeout(resolve, ms));
 };
 
-async function htmldocx(htmlString) {
-    const fileBuffer = await HTMLtoDOCX(htmlString, null);
+// app.get('/testWord'), async (req, res) => {
+//     const docx = htmlDocx.asBlob(html);
+//     res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+//     res.setHeader('Content-Disposition', `attachment; filename=${ sluggify(name) }.docx`);
+//     res.setHeader('Content-Length', docx.length);
+//     res.send(docx);
+// };
 
-    fs.writeFile(filePath, fileBuffer, (error) => {
-        if (error) {
-            console.log('Docx file creation failed');
-            return;
-        }
-        console.log('Docx file created successfully');
-    });
-};
-pathval = path.join(__dirname, 'views/resumetemplates/', "resume3.ejs")
-console.log(fs.existsSync("index.js"));
+function grabzitapi(htmldata, response) {
+    // var client = new grabzit("MTY4NTViYmUzOTliNGY3Yzk1Zjg1MWFjZWMzNDUwNTA=", "PyMYJDg/Wj8/QnE/Pz9YPz8/Pz8/RxxnPwBgPz8/Pz8=");
+    // var client = new grabzit("OGMyYzcwMzViNmZlNDg2ZGI0MmE1Y2ZmZDI2NDY0ODU=", "WVgsZT8/XXs/PwQ/Pz8KfV5SPz8zEz95Pz8/LVg/Pz8=");
+    // var client = new grabzit("MTAxOTIzZjU2MDkxNGEwZWFkNTBlZjI3NjU3MjExYWQ=", "Pz8zPz8BDD8/AgQ1P2BrVT95H1NZf0o/b00/Pz8/Pz8=");
+    var client = new grabzit("MDUxM2U1ZjZhYzkxNGY0OWFmYjNjNWM0OGFjZGMyOWM=", "Pz8/P05OOz8/Pz8IPxA/Zz9UPz88LGY/IiA/FD8rJT8=");
 
-app.get('/', async (req, res) => {
-    const docfullname = (Math.random().toString(36).substring(2, 16) + Math.random().toString(36).substring(2, 10)).toUpperCase() + ".docx";
-
-    ejs.renderFile(pathval, resdata, (err, data) => {
-        if (err) {
-            res.send(err);
-            console.log(err);
-        } else {
-
-            htmldocx(data.toString());
-            res.send(data.toString());
-           
-           
-        }
-    });
-});
-
-var pathejs = path.join(__dirname, 'views/resumetemplates/', "resume4.ejs")
-var pathhtml = path.join(__dirname, 'views/resumetemplates/', "index.html")
-
-app.get('/render', (req, res) => {
-    ejs.renderFile(pathejs, resdata, (err, htmldata) => {
-        // fs.writeFile("test.html",htmldata,(err)=>{
-        //     // console.log(err);
-        //     if (err==null){
-        //         fs.readFile(__dirname + '/test.html', 'utf8', function(err, html){
-        //             console.log(html);
-        //             htmldocx(html.toString());
-
-        //             res.writeHead(200, {'Content-Type': 'text/html'});
-        //             res.write(html.toString());
-        //         });
-        //     }
-        // });
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write(htmldata.toString());
-
-        // res.sendFile('index.html', { root: app.get('views') },);
-        // res.render(pathejs, resdata);
-    })
-});
-
-
-
-function grabzitapi() {
-    var client = new grabzit("MTY4NTViYmUzOTliNGY3Yzk1Zjg1MWFjZWMzNDUwNTA=", "PyMYJDg/Wj8/QnE/Pz9YPz8/Pz8/RxxnPwBgPz8/Pz8=");
-    client.html_to_docx(data);
+    // var client = new grabzit("MDUxM2U1ZjZhYzkxNGY0OWFmYjNjNWM0OGFjZGMyOWM=", "Pz8/P05OOz8/Pz8IPxA/Zz9UPz88LGY/IiA/FD8rJT8=");
+    client.html_to_docx(htmldata);
     client.save_to("result.docx", function (error, id) {
         if (error != null) {
             throw error;
         }
     });
 
-    res.download("result.docx");
+    response.download("result.docx");
 }
 
 
@@ -240,5 +284,106 @@ app.get("/getimage", (req, res) => {
         }
     });
 });
+async function htmldocx(htmlString) {
+    console.log(filePath);
+
+    const fileBuffer = await HTMLtoDOCX(htmlString, null, {
+        // table: { row: { cantSplit: true } },
+        // footer: true,
+        // pageNumber: true,
+
+    });
+    fs.writeFile(filePath, fileBuffer, (error) => {
+        if (error) {
+            console.log('Docx file creation failed');
+            return;
+        }
+        console.log('Docx file created successfully');
+    });
+};
+pathval = path.join(__dirname, 'views/resumetemplates/', "reordarable1.ejs")
+// console.log(fs.existsSync("index.js"));
+app.use("/public", express.static(__dirname + "/public/"));
+app.get('/', async (req, res) => {
+
+    ejs.renderFile(pathval, resdata, (err, data) => {
+        if (err) {
+            res.send(err);
+            console.log(err);
+        } else {
+            const filePath = './' + "pdfstore/" + (Math.random().toString(36).substring(2, 16) + Math.random().toString(36).substring(2, 10)).toUpperCase() + ".pdf";
+            pdf.create(data, {
+                "format": "Tabloid",
+                "border": {
+                    "top": "0",
+                    "right": "0",
+                    "bottom": "0.3in",
+                    "left": "0"
+                },
+                "header": {
+                    "height": "0.3in",
+                },
+            }).toFile(filePath, (err, out) => {
+                console.log(out);
+                fs.readFile(out.filename, function (err, content) {
+                    if (err) {
+                        res.writeHead(400, { 'Content-type': 'text/html' })
+                        console.log(err);
+                        res.end("No such file");
+                    } else {
+                        //specify the content type in the response will be an image
+                        res.writeHead(200, {
+                            'Content-disposition': 'attachment;filename=' + filePath,
+                        });
+                        res.end(content);
+                    }
+                });
+                fs.unlink(out.filename, function (err) {
+                    if (err) throw err;
+                    console.log('file deleted');
+                });
+            });
+        }
+    });
+});
+
+var pathejs = path.join(__dirname, 'views/resumetemplates/', "resume8.ejs")
+var pathejstest = path.join(__dirname, 'views/resumeTempTest/2/', "resume.ejs")
+
+// var pathhtml = path.join(__dirname, 'views/resumetemplates/', "test.html")
+
+app.get('/testEjs', (req, res) => {
+    ejs.renderFile(pathejstest, resdata, (err, htmldata) => {
+        if (err) {
+            console.log(err);
+        }
+        res.send(htmldata);
+    })
+});
+app.get('/render', (req, res) => {
+    ejs.renderFile(pathval, resdata, (err, htmldata) => {
+        // htmldocx(htmldata);
+        res.send(htmldata);
+    });
+});
+
+// country city state
+
+
+app.get("/countries", (req, res) => {
+    res.json(worldMapData.getAllCountries());
+})
+app.get("/states", (req, res) => {
+    var query = url.parse(req.url, true).query;
+    country = query.country;
+    const statesList = worldMapData.getAllStatesFromCountry(country);
+    res.json(statesList);
+})
+app.get("/cities", (req, res) => {
+    var query = url.parse(req.url, true).query;
+    state = query.state;
+    const citiesList = worldMapData.getAllCitiesFromState(state);
+    res.json(citiesList);
+})
 const PORT = process.env.PORT || 3000
 app.listen(PORT)

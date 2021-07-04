@@ -1,0 +1,578 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  style="background-color: #fff; padding: 0 1em"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0"
+    />
+    <title>PDF 1</title>
+    <style type="text/css" media="print">
+      @page {
+        size: auto;
+        margin: 5mm;
+      }
+      html {
+        zoom: 0.6;
+      }
+      /* uncomment for check A4 size */
+      @page {
+        size: 7in 9.25in;
+        margin: 27mm 16mm 27mm 16mm;
+      }
+
+      @media print {
+        .footer,
+        #non-printable {
+          display: none !important;
+        }
+        #printable {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body
+    style="
+      background-color: #fff;
+      font-family: 'Trebuchet MS';
+      padding: 1em;
+      margin: 1em auto;
+      max-width: 50em;
+    "
+  >
+    <h1 style="text-align: center"><%= firstName %> <%= lastName %></h1>
+
+    <div id="first" style="width: 16em; float: left; padding-top: 10px">
+      <h3
+        style="
+          border-bottom: none;
+          font-variant: small-caps;
+          margin-top: 0;
+          margin-bottom: 0;
+        "
+      >
+        Personal Details
+      </h3>
+      <a><%=email %></a><br />
+      <a><%=phoneNo %></a><br />
+      <% if (links && links.length>0) { %> <% for(var i=0; i < links.length;
+      i++) { %>
+      <a><%= links[i] %></a><br />
+      <% } %> <% } %>
+    </div>
+    <div
+      id="address"
+      style="padding-top: 10px; text-align: justify; height: 7em; width: 53em"
+    >
+      <div style="width: 150px; float: right">
+        <h3
+          style="
+            border-bottom: none;
+            font-variant: small-caps;
+            margin-top: 0;
+            margin-bottom: 0;
+            line-height: 24px;
+          "
+        >
+          Address
+        </h3>
+        <a><%=address %></a><br />
+
+        <a><%=city %></a> - <a><%=state %></a><br />
+        <a><%=zipCode %></a><br />
+      </div>
+    </div>
+
+    <% if (objectives && objectives.length>0) { %>
+
+    <div
+      class="section"
+      style="
+        border-top: 1px solid #ccc;
+        margin: 1em 0;
+        padding: 1em;
+        padding-bottom: 1em;
+        padding-bottom: 0px;
+        width: 850px;
+      "
+    >
+      <h2
+        style="
+          float: left;
+          font-size: 20px;
+
+          font-variant: small-caps;
+          letter-spacing: 0.06em;
+        "
+      >
+        Objectives
+      </h2>
+      <div
+        class="content"
+        style="width: 37em; margin: 0 0 0 16em; margin-left: 230px"
+      >
+        <ul style="text-align: justify">
+          <% for( let i = 0; i < objectives.length; i++ ) { %>
+          <li style="line-height: 24px"><%=objectives[i]%></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+    <% } %> <% if (skills && skills.length>0) { %>
+
+    <div
+      class="section"
+      style="
+        border-top: 1px solid #ccc;
+        width: 850px;
+
+        margin: 1em 0;
+        padding: 1em;
+        padding-bottom: 1em;
+        padding-bottom: 0px;
+      "
+    >
+      <h2
+        style="
+          float: left;
+          font-size: 20px;
+          line-height: 24px;
+          font-variant: small-caps;
+          letter-spacing: 0.06em;
+        "
+      >
+        Skills
+      </h2>
+      <div
+        class="content"
+        style="width: 37em; margin: 0 0 0 16em; margin-left: 230px"
+      >
+        <ul>
+          <% for( let i = 0; i < skills.length; i++ ) { %>
+          <li style="line-height: 24px"><%=skills[i]%></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+    <% } %> <% if (professionalSummary) { %>
+    <div
+      class="section"
+      style="
+        border-top: 1px solid #ccc;
+        margin: 1em 0;
+        padding: 1em;
+        padding-bottom: 0px;
+        width: 850px;
+      "
+    >
+      <h2
+        style="
+          float: left;
+          font-size: 20px;
+          font-variant: small-caps;
+          letter-spacing: 0.06em;
+          margin-top: 0px;
+        "
+      >
+        Summary
+      </h2>
+      <p
+        style="
+          width: 36em;
+          margin: 0 0 0 16em;
+          text-align: justify;
+          margin-left: 250px;
+          line-height: 24px;
+        "
+      >
+        <%=professionalSummary%>
+      </p>
+    </div>
+    <% } %> <% if (workHistory && workHistory.length>0) { %>
+
+    <div
+      class="section"
+      style="
+        border-top: 1px solid #ccc;
+        margin: 1em 0;
+        padding: 1em;
+        width: 850px;
+
+        padding-bottom: 1em;
+        padding-bottom: 0px;
+      "
+    >
+      <h2
+        style="
+          float: left;
+          font-size: 20px;
+          font-variant: small-caps;
+          letter-spacing: 0.06em;
+          margin-top: 0px;
+        "
+      >
+        Work Experience
+      </h2>
+
+      <div
+        class="content"
+        style="width: 32em; margin-top: 0px; margin: 0 0 0 16em"
+      >
+        <% for( let i = 0; i < workHistory.length; i++ ) { %> <% if
+        (workHistory[i].currentlyWorkHere) { %>
+        <span
+          class="date"
+          style="
+            float: right;
+            font-size: 0.8em;
+            margin-top: 0.4em;
+            padding-left: 5px;
+            margin-left: 0px;
+            height: 20px;
+            width: 20px;
+          "
+          >Current</span
+        >
+        <% } %> <% if (!workHistory[i].currentlyWorkHere) { %>
+        <span
+          class="date"
+          style="
+            float: right;
+            font-size: 0.8em;
+            margin-top: 0.4em;
+            padding-left: 5px;
+            margin-left: 0px;
+            height: 20px;
+            width: 20px;
+          "
+          ><%= new Date(workHistory[i].endDate).getMonth() + 1 +'/'+new
+          Date(workHistory[i].endDate).getFullYear() %></span
+        >
+        <% } %>
+        <span
+          class="date"
+          style="
+            float: right;
+            font-size: 0.8em;
+            margin-top: 0.4em;
+            width: 60px;
+            padding-left: 100px;
+          "
+          ><%= new Date(workHistory[i].startDate).getMonth() + 1 +'/'+new
+          Date(workHistory[i].startDate).getFullYear() %> &raquo;</span
+        >
+
+        <h3 style="margin-bottom: 0; font-size: 15px; margin-top: 0px">
+          <%=workHistory[i].employer%>
+        </h3>
+        <address
+          style="
+            font-style: italic;
+            color: #333;
+            padding-top: 10px;
+            font-size: 0.9em;
+          "
+        >
+          <%=workHistory[i].jobTitle%>
+        </address>
+        <address
+          style="
+            font-style: italic;
+            color: #333;
+            padding-top: 8px;
+            font-size: 0.9em;
+            line-height: 24px;
+          "
+        >
+          <%=workHistory[i].city%> - <%=workHistory[i].state%> -
+          <%=workHistory[i].country%>
+        </address>
+        <h3 style="margin-bottom: 0; font-size: 15px">Responsibilities</h3>
+        <% if (workHistory[i].responsibility &&
+        workHistory[i].responsibility.length>0) { %>
+
+        <ul style="padding-left: 20px; margin-left: 0.5em; width: 550px">
+          <% for( let j = 0; j < workHistory[i].responsibility.length; j++ ) {
+          %>
+          <li style="text-align: justify; line-height: 24px">
+            <%= workHistory[i].responsibility[j] %>
+          </li>
+          <% } %>
+        </ul>
+
+        <% } %>
+
+        <h3 style="margin-bottom: 0; font-size: 15px">Environment</h3>
+
+        <% if (workHistory[i].environment &&
+        workHistory[i].environment.length>0) { %>
+
+        <ul style="padding-left: 20px; margin-left: 0.5em; width: 550px">
+          <% for( let j = 0; j < workHistory[i].environment.length; j++ ) { %>
+          <li style="line-height: 24px">
+            <%= workHistory[i].environment[j] %>
+          </li>
+          <% } %>
+        </ul>
+        <% } %> <% } %>
+      </div>
+
+      <% } %>
+    </div>
+    <% if (education && education.length>0) { %>
+    <div
+      class="section"
+      style="
+        border-top: 1px solid #ccc;
+        padding: 1em;
+        padding-top: 0em;
+        padding-bottom: 1em;
+        padding-bottom: 0px;
+        width: 850px;
+      "
+    >
+      <h2
+        style="
+          float: left;
+          font-size: 20px;
+
+          font-variant: small-caps;
+          letter-spacing: 0.06em;
+        "
+      >
+        Education Details
+      </h2>
+
+      <div class="content" style="width: 32em; margin: 0 0 0 16em">
+        <% for( let i = 0; i < education.length; i++ ) { %>
+
+        <span
+          class="date"
+          style="
+            float: right;
+            font-size: 0.8em;
+            margin-top: 0.4em;
+            text-align: right;
+          "
+          ><%= education[i].graduationYear %>
+        </span>
+        <h3 style="margin-bottom: 0; line-height: 24px">
+          <%= education[i].fieldOfStudy %> <%=education[i].degree%>
+        </h3>
+        <address
+          style="
+            font-style: italic;
+            color: #333;
+            line-height: 24px;
+            font-size: 0.9em;
+          "
+        >
+          <%=education[i].schoolName%>,<%=education[i].schoolLocation%>,<%=education[i].state%>
+        </address>
+        <% } %>
+      </div>
+      <% } %>
+    </div>
+    <% if (accomplishments && accomplishments.length>0) { %>
+    <div
+      class="section"
+      style="
+        border-top: 1px solid #ccc;
+        width: 850px;
+        margin: 1em 0;
+        padding: 1em;
+      "
+    >
+      <h2
+        style="
+          width: 10em;
+          float: left;
+          font-size: 20px;
+
+          font-variant: small-caps;
+          letter-spacing: 0.06em;
+        "
+      >
+        Accomplishments
+      </h2>
+      <div class="content" style="width: 32em; margin: 0 0 0 16em">
+        <ul style="padding-left: 0.1em; margin-left: 0.5em">
+          <% for(var i=0; i < accomplishments.length; i++) { %>
+          <li style="line-height: 24px"><%=accomplishments[i]%></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+    <% } %> <% if (affiliations && affiliations.length>0) { %>
+    <div
+      class="section"
+      style="
+        border-top: 1px solid #ccc;
+        margin: 1em 0;
+        padding: 1em;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        width: 850px;
+
+        padding-bottom: 0px;
+        padding-top: 0px;
+      "
+    >
+      <h2
+        style="
+          float: left;
+          font-size: 20px;
+
+          font-variant: small-caps;
+          letter-spacing: 0.06em;
+        "
+      >
+        Affiliations
+      </h2>
+      <div class="content" style="width: 32em; margin: 0 0 0 16em">
+        <ul style="padding-left: 0.1em; margin-left: 0.5em">
+          <% for(var i=0; i < affiliations.length; i++) { %>
+          <li style="line-height: 24px"><%=affiliations[i]%></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+    <% } %> <% if (certifications && certifications.length>0) { %>
+    <div
+      class="section"
+      style="
+        border-top: 1px solid #ccc;
+        margin: 1em 0;
+        padding: 1em;
+        width: 850px;
+
+        margin-bottom: 0px;
+        margin-top: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+      "
+    >
+      <h2
+        style="
+          float: left;
+          font-size: 20px;
+
+          font-variant: small-caps;
+          letter-spacing: 0.06em;
+        "
+      >
+        Certifications
+      </h2>
+      <div class="content" style="width: 32em; margin: 0 0 0 16em">
+        <ul style="padding-left: 0.5em; margin-left: 0.5em">
+          <% for(var i=0; i < certifications.length; i++) { %>
+          <li style="line-height: 24px"><%=certifications[i]%></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+    <% } %> <% if (additionalDetails && additionalDetails.length>0) { %>
+
+    <div
+      class="section"
+      style="
+        border-top: 1px solid #ccc;
+        padding: 1em;
+        padding-top: 0em;
+        width: 850px;
+
+        padding-bottom: 1em;
+        padding-bottom: 0px;
+      "
+    >
+      <h2
+        style="
+          float: left;
+          font-size: 20px;
+
+          font-variant: small-caps;
+          letter-spacing: 0.06em;
+        "
+      >
+        Additional Details
+      </h2>
+
+      <div class="content" style="width: 32em; margin: 0 0 1em 16em">
+        <% for( let i = 0; i < additionalDetails.length; i++ ) { %>
+
+        <h3 style="margin-bottom: 0; line-height: 24px">
+          <%= additionalDetails[i].key%>
+        </h3>
+        <address
+          style="
+            font-style: italic;
+            color: #333;
+            line-height: 24px;
+            font-size: 0.9em;
+          "
+        >
+          <%= additionalDetails[i].value%>
+        </address>
+        <% } %>
+      </div>
+      <% } %>
+    </div>
+    <% if (refrences && refrences.length>0) { %>
+
+    <div
+      class="section"
+      style="
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+
+        padding: 1em;
+        padding-top: 0em;
+        width: 850px;
+
+        padding-bottom: 1em;
+        padding-bottom: 0px;
+      "
+    >
+      <h2
+        style="
+          float: left;
+          font-size: 20px;
+
+          font-variant: small-caps;
+          letter-spacing: 0.06em;
+        "
+      >
+        References
+      </h2>
+
+      <div class="content" style="width: 32em; margin: 1em 0 0.5em 16em">
+        <% for( var i=0; i < refrences.length; i++) { %>
+        <div
+          class="job"
+          style="position: relative; margin-bottom: 1em; padding-bottom: 0px"
+        >
+          <address
+            style="font-style: italic; font-weight: bold; font-size: 1em"
+          >
+            <%=refrences[i].name%>
+          </address>
+          <address style="font-style: italic; color: #333; font-size: 0.9em">
+            <%=refrences[i].position%>
+          </address>
+          <address style="font-style: italic; color: #333; font-size: 0.9em">
+            <%=refrences[i].phone%>
+          </address>
+          <address style="font-style: italic; color: #333; font-size: 0.9em">
+            <%=refrences[i].email%>
+          </address>
+        </div>
+        <% } %>
+      </div>
+      <% } %>
+    </div>
+  </body>
+</html>

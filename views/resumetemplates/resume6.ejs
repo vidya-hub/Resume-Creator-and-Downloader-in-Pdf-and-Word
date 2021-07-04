@@ -1,205 +1,325 @@
-<!doctype html>
-<html moznomarginboxes mozdisallowselectionprint>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
     <title>PDF 1</title>
     <style type="text/css" media="print">
-        @page {
-            size: auto;
-            margin: 5mm;
+      @page {
+        size: auto;
+        margin: 5mm;
+      }
 
+      html {
+        zoom: 0.5;
+      }
+
+      /* uncomment for check A4 size */
+      @page {
+        size: 7in 9.25in;
+        margin: 27mm 16mm 27mm 16mm;
+      }
+
+      @media print {
+        .footer,
+        #non-printable {
+          display: none !important;
         }
 
-        html {
-            zoom: 0.7;
+        #printable {
+          display: block;
         }
-
-        /* uncomment for check A4 size */
-        @page {
-            size: 7in 9.25in;
-            margin: 27mm 16mm 27mm 16mm;
-        }
-
-        @media print {
-
-            .footer,
-            #non-printable {
-                display: none !important;
-            }
-
-            #printable {
-                display: block;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body style="padding:0px; margin:0px; box-sizing: border-box;">
-    <div style="margin:15px;padding:0px;font-family: PT Sans, sans-serif;">
-        <div>
-            <table width="100%">
-                <tr style="border-bottom: 3px solid #8a2020;">
-                    <td class=" font-weight-bold" style="width: 50%;">
-                        <%= firstName %> <%= lastName %>
-                    </td>
-                    <td class="text-right" width="50%">
-                        <% if (email && email.length>0) { %>
-                        Email: <%= email %><br />
-                        <%}%>
-                        <% if (phoneNo && phoneNo.length>0) { %>
-                        Phone: <%= phoneNo %><br />
-                        <%}%>
-                        <% if (address && address.length>0) { %>
-                        Address: <%= address %><br />
-                        <%}%>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-left font-weight-bold" style="padding-top: 12px;">
-                        EXECUTIVE SUMMARY
-                    </td>
-                    <td class="text-right">
-                    </td>
-                </tr>
-                <tr style="border-bottom: 3px solid #8a2020;">
-                    <td class="text-left" style="width: 100%;" colspan="2">
-                        <% if (professionalSummary && professionalSummary.length>0) { %>
-                        <%=  professionalSummary %><br />
-                        <%}%>
-                    </td>
-                </tr>
-                <% if (summary && summary.length>0) { %>
-                <tr>
-                    <td class="text-left font-weight-bold" style="padding-top: 12px;">
-                        PROFESSIONAL SUMMARY
-                    </td>
-                    <td class="text-right">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-left" style="width: 100%;" colspan="2">
+  <body style="padding: 0px; margin: 0px; box-sizing: border-box">
+    <div style="margin: 15px; padding: 0px; font-family: PT Sans, sans-serif">
+      <div>
+        <table width="100%">
+          <tr style="border-bottom: 3px solid #8a2020">
+            <td class="font-weight-bold" style="width: 50%">
+              <%= firstName %> <%= lastName %>
+            </td>
+            <td class="text-right" width="50%">
+              <% if (email && email.length>0) { %> Email: <%= email %><br />
+              <%}%> <% if (phoneNo && phoneNo.length>0) { %> Phone: <%= phoneNo
+              %><br />
+              <%}%> <% if (address && address.length>0) { %> Address: <%=
+              address %><br />
+              <%}%>
+            </td>
+          </tr>
+          <% if (objectives && objectives.length>0) { %>
+            <tr>
+              <td style="padding-bottom: 15px">
+                <p class="text-left font-weight-bold" style="padding-top: 12px">
+                  Objectives
+                </p>
+                <ul>
+                  <% for(var i=0; i < objectives.length; i++) { %>
+                  <li style="font-size: 16px; margin-bottom: 5px">
+                    <%=objectives[i]%>
+                  </li>
+                  <% } %>
+                </ul>
+              </td>
+            </tr>
+            <% } %>
+            
+          
+          <% if (summary && summary.length>0) { %>
+          <tr>
+            <td class="text-left font-weight-bold" style="padding-top: 12px">
+              PROFESSIONAL SUMMARY
+            </td>
+            <td class="text-right"></td>
+          </tr>
+          <tr>
+            <td class="text-left" style="width: 100%" colspan="2">
+              <ul>
+                <% for(var i=0; i < summary.length; i++) { %>
+                <li><%=summary[i]%></li>
+                <% } %>
+              </ul>
+            </td>
+          </tr>
+          <%}%>
 
-                        <ul>
-                            <% for(var i=0; i < summary.length; i++) { %>
-                                <li><%=summary[i]%></li>
-                                <% } %>
-                        </ul>
-                    </td>
-                </tr>
+          <% if (workHistory && workHistory.length>0) { %>
+            <tr>
+              <td class="text-left font-weight-bold" style="padding-top: 12px">
+                PROFESSIONAL EXPERIENCE
+              </td>
+              <td class="text-right"></td>
+            </tr>
+  
+            <% for(var i=0; i < workHistory.length; i++) { %>
+            <tr>
+              <td class="text-left" style="padding-top: 12px">
+                <%= workHistory[i].employer %> <% if (workHistory[i] &&
+                workHistory[i].city) { %> <%= workHistory[i].city %><%}%><br />
+                <span style="font-size: small">
+                  <%= workHistory[i].jobTitle %>
+                </span>
+              </td>
+              <td style="font-size: small">
+                &nbsp;<br />
+                <%= new Date(workHistory[i].startDate).getMonth() + 1 +'/'+new
+                Date(workHistory[i].startDate).getFullYear() %> - <% if
+                (workHistory[i].currentlyWorkHere) { %>
+                <span>Current </span>
+                <% } %> <% if (!workHistory[i].currentlyWorkHere) { %>
+                <span
+                  ><%= new Date(workHistory[i].endDate).getMonth() + 1 +'/'+new
+                  Date(workHistory[i].endDate).getFullYear() %></span
+                >
+                <% } %>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-left" style="padding-top: 12px">
+                <% if (workHistory[i] && workHistory[i].environment.length>0 &&
+                workHistory[i].environment[0] &&
+                workHistory[i].environment[0].trim()) { %>
+                <div class="r_1 last">
+                  <h8>Environment:</h8>
+                  <div class="details_main">
+                    <div class="details">
+                      <ul >
+                        <% for(var j=0; j < workHistory[i].environment.length;
+                        j++) { %>
+                        <li><%= workHistory[i].environment[j] %></li>
+                        <%}%>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
                 <%}%>
-                <% if (skills && skills.length>0) { %>
-                <tr>
-                    <td class="text-left font-weight-bold" style="padding-top: 12px;">
-                        TECHNICAL SKILLS
-                    </td>
-                    <td class="text-right">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-left" style="width: 100%;" colspan="2">
-                        <ul>
-                            <% for(var i=0; i < skills.length; i++) { %>
-                                <li><%=skills[i]%></li>
-                                <% } %>
-                        </ul>
-                    </td>
-                </tr>
+              </td>
+              <td style="font-size: small">
+                &nbsp;<br />
+                <% if (workHistory[i] && workHistory[i].responsibility.length>0) {
+                %>
+                <div class="r_1 last">
+                  <h8>Responsibilities:</h8>
+                  <div class="details_main">
+                    <div class="details">
+                      <ul class="summry">
+                        <% for(var j=0; j < workHistory[i].responsibility.length;
+                        j++) { %>
+                        <li><%= workHistory[i].responsibility[j] %></li>
+                        <%}%>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
                 <%}%>
-                <% if (workHistory && workHistory.length>0) { %>
-                <tr>
-                    <td class="text-left font-weight-bold" style="padding-top: 12px;">
-                        PROFESSIONAL EXPERIENCE
-                    </td>
-                    <td class="text-right">
-                    </td>
-                </tr>
-                <% for(var i=0; i < workHistory.length; i++) { %>
-                <tr>
-                    <td class="text-left font-weight-bold" style="padding-top: 12px;">
-                        <%= workHistory[i].employer %> <% if (workHistory[i] && workHistory[i].city) { %> , <%= workHistory[i].city %><%}%><br>
-                        <span style="font-size: small;">
-                            <%= workHistory[i].jobTitle %> 
-                        </span>
-                    </td>
-                    <td class="font-weight-bold" style="font-size: small;">
-                        &nbsp;<br>
-                        <%= new Date(workHistory[i].startDate).getMonth() + 1 +'/'+new Date(workHistory[i].startDate).getFullYear() %> -  <% if (workHistory[i].currentlyWorkHere) { %>
-                            <span>Currant </span>
-                            <% } %>
-                            <% if (!workHistory[i].currentlyWorkHere) { %>
-                            <span><%= new Date(workHistory[i].endDate).getMonth() + 1 +'/'+new Date(workHistory[i].endDate).getFullYear() %></span>
-                            <% } %>
-                    </td>
-                </tr>
-                <!-- <tr>
-                    <td class="text-left" style="width: 100%;" colspan="2">
-                        Business Analyst Consultant working on a variety of public sector projects in NYS and NYC. The
-                        Audit and Inspection
-                        Management System Project involved automating and electronically enabling the full life cycle of
-                        the inspection and audit
-                        process.
-                    </td>
-                </tr> -->
-                
-                <tr>
-                    <td class="text-left font-weight-bold" style="width: 100%;" colspan="2">
-                        Responsibilities:
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-left" style="width: 100%;" colspan="2">
-                        <ul>
-                            <li>
-                                Business Modeling : - MS Office Suite, MS Visio, Rational Rose, Enterprise Architect
-                            </li>
-                            <li>
-                                Requirement Management Tools : - Rational DOORS, HP Application Lifecycle Management (HP
-                                Quality Center)
-                            </li>
-                            <li>
-                                Applications &amp; Databases : - MS Office (Word, Excel, PowerPoint, Outlook, Project)
-                            </li>
-                            <li>
-                                Languages : - UML, SQL
-                            </li>
-                            <li>
-                                Operating Systems : - Windows XP/Vista/7/8/10
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-left font-weight-bold" style="width: 100%;" colspan="2">
-                        Responsibilities:<span style="font-size: small;" class="font-weight-normal">
-                            MS Office Suite, MS Project, MS Visio, UML.
-                        </span>
-                    </td>
-                </tr>
-                <%}%>
-                <%}%>
-                <tr>
-                    <td class="text-left font-weight-bold" style="padding-top: 12px;">
-                        EDUCATION
-                    </td>
-                    <td class="text-right">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-left" style="width: 100%;" colspan="2">
-                        <ul>
-                            <li>
-                                BACHELOR OF ARTS, CRIMINAL JUSTICE, Rutgers State University – Newark, NJ
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-        </div>
+              </td>
+            </tr>
+  
+            <%}%> <%}%>
+            
+            
+           
+          
+          
+          <% if (education && education.length>0) { %>
+          <tr>
+            <td style="padding-bottom: 30px">
+              <p class="text-left font-weight-bold" style="padding-top: 12px">
+                Education
+              </p>
+              <% for(var i=0; i < education.length; i++) { %>
+              <p style="font-size: 16px; margin-top: 0; margin-bottom: 5px">
+                <b><%=education[i].fieldOfStudy%> <%=education[i].degree%></b>:
+                <%=education[i].graduationYear%>
+              </p>
+              <div style="display: flex; flex-wrap: wrap; margin-bottom: 15px">
+                <p style="color: #000; font-size: 16px; margin: 0; width: 70%">
+                  <%=education[i].schoolName%> -
+                  <%=education[i].schoolLocation%>, <%=education[i].state%>
+                </p>
+              </div>
+              <% } %>
+            </td>
+          </tr>
+          <% } %>
+          <% if (skills && skills.length>0) { %>
+          <tr>
+            <td class="text-left font-weight-bold" style="padding-top: 12px">
+              TECHNICAL SKILLS
+            </td>
+            <td class="text-right"></td>
+          </tr>
+          <tr>
+            <td class="text-left" style="width: 100%" colspan="2">
+              <ul>
+                <% for(var i=0; i < skills.length; i++) { %>
+                <li><%=skills[i]%></li>
+                <% } %>
+              </ul>
+            </td>
+          </tr>
+          <%}%>
+          <% if (accomplishments && accomplishments.length>0) { %>
+          <tr>
+            <td style="padding-bottom: 15px">
+              <p class="text-left font-weight-bold" style="padding-top: 12px">
+                Accomplishments
+              </p>
+              <ul>
+                <% for(var i=0; i < accomplishments.length; i++) { %>
+                <li style="font-size: 16px; margin-bottom: 5px">
+                  <%=accomplishments[i]%>
+                </li>
+                <% } %>
+              </ul>
+            </td>
+          </tr>
+          <% } %> 
+          
+          
+          <% if (affiliations && affiliations.length>0) { %>
+          <tr>
+            <td style="padding-bottom: 15px">
+              <p class="text-left font-weight-bold" style="padding-top: 12px">
+                Affilations
+              </p>
+              <ul>
+                <% for(var i=0; i < affiliations.length; i++) { %>
+                <li style="font-size: 16px"><%=affiliations[i]%></li>
+                <% } %>
+              </ul>
+            </td>
+          </tr>
+          <% } %> <% if (certifications && certifications.length>0) { %>
+          <tr>
+            <td style="padding-bottom: 15px">
+              <p class="text-left font-weight-bold" style="padding-top: 12px">
+                Certifications
+              </p>
+              <ul>
+                <% for(var i=0; i < certifications.length; i++) { %>
+                <li style="font-size: 16px; margin-bottom: 5px">
+                  <%=certifications[i]%>
+                </li>
+                <% } %>
+              </ul>
+            </td>
+          </tr>
+          <% } %> 
+          
+          <% if (additionalInformation &&
+          additionalInformation.length>0) { %>
+          <tr>
+            <td style="padding-bottom: 15px">
+              <p class="text-left font-weight-bold" style="padding-top: 12px">
+                Additional Information
+              </p>
+              <% for(var i=0; i < additionalInformation.length; i++) { %>
+              <p style="font-size: 16px; line-height: 16px">
+                <%=additionalInformation[i].title%> :-
+                <%=additionalInformation[i].description%>
+              </p>
+              <% } %>
+            </td>
+          </tr>
+          <% } %>
+
+
+          <% if (additionalDetails &&
+          additionalDetails.length>0) { %>
+          <tr>
+            <td style="padding-bottom: 15px">
+              <p class="text-left font-weight-bold" style="padding-top: 12px">
+                Additional Details
+              </p>
+              <% for(var i=0; i < additionalDetails.length; i++) { %>
+              <p style="font-size: 16px; line-height: 16px">
+                <%=additionalDetails[i].key%> :-
+                <%=additionalDetails[i].value%>
+              </p>
+              <% } %>
+            </td>
+          </tr>
+          <% } %>
+          
+          <% if (refrences && refrences.length>0) { %>
+          <tr>
+            <td style="padding-bottom: 15px">
+              <p class="text-left font-weight-bold" style="padding-top: 12px">
+                References Information
+              </p>
+              <% for(var i=0; i < refrences.length; i++) { %>
+              <p style="font-size: 16px; line-height: 16px; margin-left: 20px">
+                <%=refrences[i].name%>
+              </p>
+              <p style="font-size: 16px; line-height: 16px; margin-left: 20px">
+                <%=refrences[i].position%>
+              </p>
+              <p style="font-size: 16px; line-height: 16px; margin-left: 20px">
+                <%=refrences[i].email%>
+              </p>
+              <p style="font-size: 16px; line-height: 16px; margin-left: 20px">
+                <%=refrences[i].phone%>
+              </p>
+
+              <% } %>
+            </td>
+          </tr>
+          <% } %>
+        </table>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>

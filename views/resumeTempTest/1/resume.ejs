@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'> -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0"
+    />
+    <title>PDF 1</title>
+    <style type="text/css" media="print">
+      @page {
+        size: auto;
+        margin: 5mm;
+      }
+      html {
+        zoom: 0.6;
+      }
+      /* uncomment for check A4 size */
+      @page {
+        size: 7in 9.25in;
+        margin: 27mm 16mm 27mm 16mm;
+      }
+
+      @media print {
+        .footer,
+        #non-printable {
+          display: none !important;
+        }
+        #printable {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body
+    style="
+      background-color: #fff;
+      font-family: 'Trebuchet MS';
+      padding: 1em;
+      margin: 1em auto;
+      max-width: 50em;
+    "
+  >
+    <% for( let index = 0; index < listOfContent.length; index++ ) { %> <%-
+    include("./"+listOfContent[index]); %> <% } %>
+  </body>
+</html>

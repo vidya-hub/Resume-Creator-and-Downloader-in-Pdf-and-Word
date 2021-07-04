@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  style="background-color: #fff; padding: 0 1em"
+>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Resume | First Last</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <style type="text/css" media="all">
+      /* #address {
+        height: 5em;
+        width: 48em;
+        padding: 1em;
+      }
+      #address div {
+        width: 16em;
+        float: left;
+      }
+      #address h3 {
+        border-bottom: none;
+        font-variant: small-caps;
+        margin-top: 0;
+      }
+      .date {
+        float: right;
+        font-size: 0.8em;
+        margin-top: 0.4em;
+        text-align: right;
+      }
+      abbr,
+      acronym {
+        border-bottom: 1px dotted #333;
+        cursor: help;
+      }
+      address {
+        font-style: italic;
+        color: #333;
+        font-size: 0.9em;
+      }
+      .content {
+        width: 32em;
+        margin: 0 0 0 16em;
+      }
+      .section {
+        border-top: 1px solid #ccc;
+        margin: 1em 0;
+        padding: 1em;
+      }
+      ul {
+        padding-left: 0.5em;
+        margin-left: 0.5em;
+      }
+      h1 {
+        margin: 1em 0 1em 9.5em;
+        font-size: 1.75em;
+      }
+      h2 {
+        width: 14em;
+        float: left;
+        font-size: 1em;
+        font-variant: small-caps;
+        letter-spacing: 0.06em;
+      }
+      h3 {
+        margin-bottom: 0;
+      } */
+    </style>
+    <!-- <style type="text/css" media="print">
+      body {
+        background-color: #fff;
+        border-width: 0 0 0 0;
+        margin: 0;
+        width: 100%;
+      }
+    </style> -->
+  </head>
+  <body
+    style="
+      background-color: #fff;
+      font-family: 'Trebuchet MS';
+      padding: 1em;
+      margin: 1em auto;
+      max-width: 50em;
+    "
+  >
+    <h1 style="text-align: center"><%= firstName %> <%= lastName %></h1>
+    <div
+      id="address"
+      style="
+        height: 5em;
+        width: 48em;
+        padding: 1em;
+        height: 5em;
+        width: 48em;
+        padding: 1em;
+      "
+    >
+      <!-- <div style="width: 16em; float: left">
+        <h3
+          style="
+            border-bottom: none;
+            font-variant: small-caps;
+            margin-top: 0;
+            margin-bottom: 0;
+          "
+        >
+          Local Address
+        </h3>
+        <%= address %><br />
+      </div> -->
+      <!-- <div id="first" style="width: 16em; float: left">
+        <h3
+          style="
+            margin-bottom: 0;
+            border-bottom: none;
+            font-variant: small-caps;
+            margin-top: 0;
+          "
+        >
+          Credentials
+        </h3>
+        <br />
+        <a><%=email %></a><br />
+        <a><%=phoneNo %></a>
+        <% if (links && links.length>0) { %> <% for(var i=0; i < links.length;
+        i++) { %>
+        <a><%= links[i] %></a>
+        <% } %> <% } %>
+      </div> -->
+      <div style="width: 16em; float: left">
+        <h3
+          style="
+            margin-bottom: 0;
+            border-bottom: none;
+            font-variant: small-caps;
+            margin-top: 0;
+          "
+        >
+          Permanent Address
+        </h3>
+        <%=address %> <br />
+      </div>
+    </div>
+
+    <% if (skills && skills.length>0) { %>
+
+    <div class="section">
+      <h2>Skills</h2>
+      <div class="content">
+        <ul>
+          <% for( let i = 0; i < skills.length; i++ ) { %>
+          <li><%=skills[i]%></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+    <% } %> <% if (workHistory && workHistory.length>0) { %>
+
+    <div class="section">
+      <h2>Work Experience</h2>
+
+      <div class="content">
+        <% for( let i = 0; i < workHistory.length; i++ ) { %>
+
+        <span class="date"
+          ><%= workHistory[i].startDate %> &raquo; <%= workHistory[i].endDate
+          %></span
+        >
+        <h3>Job Title <%= i %></h3>
+        <address>
+          <%=workHistory[i].employer%>,<%=workHistory[i].city%>,<%=workHistory[i].state%>
+        </address>
+        <% if (workHistory[i].environment &&
+        workHistory[i].environment.length>0) { %>
+
+        <ul>
+          <% for( let j = 0; j < workHistory[i].environment.length; j++ ) { %>
+          <li><%= workHistory[i].environment[j] %></li>
+          <% } %>
+        </ul>
+        <% } %> <% } %>
+      </div>
+
+      <% } %>
+    </div>
+    <% if (education && education.length>0) { %>
+    <div class="section">
+      <h2>Education Details</h2>
+
+      <div class="content">
+        <% for( let i = 0; i < education.length; i++ ) { %>
+
+        <span class="date"><%= education[i].graduationYear %> </span>
+        <h3><%= education[i].fieldOfStudy %> <%=education[i].degree%></h3>
+        <address>
+          <%=education[i].schoolName%>,<%=education[i].schoolLocation%>,<%=education[i].state%>
+        </address>
+        <% } %>
+      </div>
+      <% } %>
+    </div>
+    <% if (accomplishments && accomplishments.length>0) { %>
+    <div class="section">
+      <h2>Accomplishments</h2>
+      <div class="content">
+        <ul>
+          <% for(var i=0; i < accomplishments.length; i++) { %>
+          <li><%=accomplishments[i]%></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+    <% } %> <% if (objectives && objectives.length>0) { %>
+    <div class="section">
+      <h2>Objectives</h2>
+      <div class="content">
+        <ul>
+          <% for(var i=0; i < objectives.length; i++) { %>
+          <li><%=objectives[i]%></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+    <% } %> <% if (affiliations && affiliations.length>0) { %>
+    <div class="section">
+      <h2>Affiliations</h2>
+      <div class="content">
+        <ul>
+          <% for(var i=0; i < affiliations.length; i++) { %>
+          <li><%=affiliations[i]%></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+    <% } %> <% if (certifications && certifications.length>0) { %>
+    <div class="section">
+      <h2>Certifications</h2>
+      <div class="content">
+        <ul>
+          <% for(var i=0; i < certifications.length; i++) { %>
+          <li><%=certifications[i]%></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+    <% } %>
+    <div class="section">
+      <h2>Education</h2>
+      <div class="content">
+        <ul>
+          <li>
+            Candidate for Bachelor of Major, University, Province, StartYear -
+            Present
+          </li>
+          <li>OSSD, Highschool, Town, Province, StartYear-EndYear</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Academic Awards</h2>
+      <div class="content">
+        <ul>
+          <li>Year, Year, Name of award/Scholarship</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
