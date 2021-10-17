@@ -2,48 +2,123 @@
 
 <div
   class="section"
-  style="border-top: 1px solid #ccc; margin: 1em 0; padding: 1em"
+  style="
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 1em;
+    width: 850px;
+
+    padding-bottom: 1em;
+    padding-bottom: 0px;
+  "
 >
   <h2
     style="
-      width: 14em;
       float: left;
-      font-size: 1em;
+      font-size: 20px;
       font-variant: small-caps;
       letter-spacing: 0.06em;
+      margin-top: 0px;
     "
   >
     Work Experience
   </h2>
 
-  <div class="content" style="width: 32em; margin: 0 0 0 16em">
-    <% for( let i = 0; i < workHistory.length; i++ ) { %>
-
+  <div class="content" style="width: 32em; margin-top: 0px; margin: 0 0 0 16em">
+    <% for( let i = 0; i < workHistory.length; i++ ) { %> <% if
+    (workHistory[i].currentlyWorkHere) { %>
     <span
       class="date"
       style="
         float: right;
         font-size: 0.8em;
         margin-top: 0.4em;
-        text-align: right;
+        padding-left: 5px;
+        margin-left: 0px;
+        height: 20px;
+        width: 20px;
       "
-      ><%= workHistory[i].startDate %> &raquo; <%= workHistory[i].endDate
-      %></span
+      >Current</span
     >
-    <h3 style="margin-bottom: 0">Job Title <%= i %></h3>
-    <address style="font-style: italic; color: #333; font-size: 0.9em">
-      <%=workHistory[i].employer%>,<%=workHistory[i].city%>,<%=workHistory[i].state%>
+    <% } %> <% if (!workHistory[i].currentlyWorkHere) { %>
+    <span
+      class="date"
+      style="
+        float: right;
+        font-size: 0.8em;
+        margin-top: 0.4em;
+        padding-left: 5px;
+        margin-left: 0px;
+        height: 20px;
+        width: 20px;
+      "
+      ><%= new Date(workHistory[i].endDate).getMonth() + 1 +'/'+new
+      Date(workHistory[i].endDate).getFullYear() %></span
+    >
+    <% } %>
+    <span
+      class="date"
+      style="
+        float: right;
+        font-size: 0.8em;
+        margin-top: 0.4em;
+        width: 60px;
+        padding-left: 100px;
+      "
+      ><%= new Date(workHistory[i].startDate).getMonth() + 1 +'/'+new
+      Date(workHistory[i].startDate).getFullYear() %> &raquo;</span
+    >
+
+    <h3 style="margin-bottom: 0; font-size: 15px; margin-top: 0px">
+      <%=workHistory[i].employer%>
+    </h3>
+    <address
+      style="
+        font-style: italic;
+        color: #333;
+        padding-top: 10px;
+        font-size: 0.9em;
+      "
+    >
+      <%=workHistory[i].jobTitle%>
     </address>
+    <address
+      style="
+        font-style: italic;
+        color: #333;
+        padding-top: 8px;
+        font-size: 0.9em;
+        line-height: 24px;
+      "
+    >
+      <%=workHistory[i].city%> - <%=workHistory[i].state%> -
+      <%=workHistory[i].country%>
+    </address>
+    <h3 style="margin-bottom: 0; font-size: 15px">Responsibilities</h3>
+    <% if (workHistory[i].responsibility &&
+    workHistory[i].responsibility.length>0) { %>
+
+    <ul style="padding-left: 20px; margin-left: 0.5em; width: 550px">
+      <% for( let j = 0; j < workHistory[i].responsibility.length; j++ ) { %>
+      <li style="text-align: justify; line-height: 24px">
+        <%= workHistory[i].responsibility[j] %>
+      </li>
+      <% } %>
+    </ul>
+
+    <% } %>
+
+    <h3 style="margin-bottom: 0; font-size: 15px">Environment</h3>
+
     <% if (workHistory[i].environment && workHistory[i].environment.length>0) {
     %>
 
-    <ul style="padding-left: 0.5em; margin-left: 0.5em">
+    <ul style="padding-left: 20px; margin-left: 0.5em; width: 550px">
       <% for( let j = 0; j < workHistory[i].environment.length; j++ ) { %>
-      <li><%= workHistory[i].environment[j] %></li>
+      <li style="line-height: 24px"><%= workHistory[i].environment[j] %></li>
       <% } %>
     </ul>
     <% } %> <% } %>
   </div>
-
-  <% } %>
 </div>
+<% } %>

@@ -1,30 +1,35 @@
 <% if (professionalSummary) { %>
-<tr>
-  <td style="padding-bottom: 30px">
-    <h3
-      style="
-        margin-bottom: 0;
-        border-bottom: none;
-        font-variant: small-caps;
-        margin-top: 0;
-        text-align: center;
-        border-top: 1px solid #ccc;
-        margin: 1em 0;
-        padding: 1em;
-      "
-    >
-      Professional Summary
-    </h3>
-    <p
-      style="
-        margin-bottom: 0;
-        font-variant: small-caps;
-        margin-top: 10;
-        text-align: center;
-      "
-    >
-      <%=professionalSummary%>
-    </p>
-  </td>
-</tr>
+<div
+  class="section"
+  style="
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 1em;
+    padding-bottom: 0px;
+    width: 850px;
+  "
+>
+  <h2
+    style="
+      float: left;
+      font-size: 20px;
+      font-variant: small-caps;
+      letter-spacing: 0.06em;
+      margin-top: 0px;
+    "
+  >
+    Summary
+  </h2>
+  <p
+    style="
+      width: 36em;
+      margin: 0 0 0 16em;
+      text-align: justify;
+      margin-left: 250px;
+      line-height: 24px;
+    "
+  >
+    <%=professionalSummary%>
+  </p>
+</div>
 <% } %>

@@ -1,0 +1,93 @@
+<% if (workHistory && workHistory.length>0) { %>
+<tr>
+  <th
+    class="text-left font-weight-bold"
+    style="
+      padding-top: 12px;
+      font-size: 22px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #082970;
+    "
+  >
+    PROFESSIONAL EXPERIENCE
+  </th>
+</tr>
+
+<% for(var i=0; i < workHistory.length; i++) { %>
+<tr>
+  <th
+    class="text-left font-weight-bold"
+    style="
+      padding-top: 12px;
+      padding-left: 12px;
+      font-weight: bold;
+      font-size: 22px;
+      padding-left: 1px;
+    "
+  >
+    <%= workHistory[i].employer %> <br />
+    <span
+      style="
+        font-size: 20px;
+        font-weight: lighter;
+        font-style: italic;
+        width: max-content;
+      "
+    >
+      <%= workHistory[i].jobTitle %> (&nbsp; <%= new
+      Date(workHistory[i].startDate).getMonth() + 1 +'/'+new
+      Date(workHistory[i].startDate).getFullYear() %> - <% if
+      (workHistory[i].currentlyWorkHere) { %>
+      <span>Current </span>
+      <% } %> <% if (!workHistory[i].currentlyWorkHere) { %>
+      <span
+        ><%= new Date(workHistory[i].endDate).getMonth() + 1 +'/'+new
+        Date(workHistory[i].endDate).getFullYear() %></span
+      >
+      <% } %>)
+    </span>
+    <span style="position: relative; left: 32em">
+      <% if (workHistory[i] && workHistory[i].city) { %> <%= workHistory[i].city
+      %><%}%>
+    </span>
+  </th>
+</tr>
+<tr>
+  <td class="text-left" style="padding-top: 16px">
+    <% if (workHistory[i] && workHistory[i].environment.length>0 &&
+    workHistory[i].environment[0] && workHistory[i].environment[0].trim()) { %>
+    <div class="r_1 last">
+      <p style="font-weight: bold; font-size: 20px">Environment:</p>
+      <div class="details_main">
+        <div class="details">
+          <ul style="font-size: 19px">
+            <% for(var j=0; j < workHistory[i].environment.length; j++) { %>
+            <li><%= workHistory[i].environment[j] %></li>
+            <%}%>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <%}%>
+  </td>
+</tr>
+<tr>
+  <td style="font-size: small">
+    &nbsp;<br />
+    <% if (workHistory[i] && workHistory[i].responsibility.length>0) { %>
+    <div class="r_1 last">
+      <p style="font-weight: bold; font-size: 20px">Responsibilities:</p>
+      <div class="details_main">
+        <div class="details">
+          <ul style="font-size: 19px">
+            <% for(var j=0; j < workHistory[i].responsibility.length; j++) { %>
+            <li><%= workHistory[i].responsibility[j] %></li>
+            <%}%>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <%}%>
+  </td>
+</tr>
+<%}%> <%}%>

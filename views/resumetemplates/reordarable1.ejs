@@ -18,11 +18,6 @@
       html {
         zoom: 0.6;
       }
-      /* uncomment for check A4 size */
-      @page {
-        size: 7in 9.25in;
-        margin: 27mm 16mm 27mm 16mm;
-      }
 
       @media print {
         .footer,
@@ -40,8 +35,8 @@
       background-color: #fff;
       font-family: 'Trebuchet MS';
       padding: 1em;
-      margin: 1em auto;
       max-width: 50em;
+      margin-left: 300px;
     "
   >
     <h1 style="text-align: center"><%= firstName %> <%= lastName %></h1>
@@ -505,18 +500,8 @@
         <% for( let i = 0; i < additionalDetails.length; i++ ) { %>
 
         <h3 style="margin-bottom: 0; line-height: 24px">
-          <%= additionalDetails[i].key%>
+          <%= additionalDetails[i].key%> : <%= additionalDetails[i].value%>
         </h3>
-        <address
-          style="
-            font-style: italic;
-            color: #333;
-            line-height: 24px;
-            font-size: 0.9em;
-          "
-        >
-          <%= additionalDetails[i].value%>
-        </address>
         <% } %>
       </div>
       <% } %>

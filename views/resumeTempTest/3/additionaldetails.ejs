@@ -1,0 +1,166 @@
+<% if (accomplishments && accomplishments.length>0) { %>
+<tr>
+  <td style="padding-bottom: 15px">
+    <p
+      class="text-left font-weight-bold"
+      style="padding-top: 12px; font-size: 20px"
+    >
+      Accomplishments
+    </p>
+    <ul>
+      <% for(var i=0; i < accomplishments.length; i++) { %>
+      <li style="font-size: 19px; margin-bottom: 5px">
+        <%=accomplishments[i]%>
+      </li>
+      <% } %>
+    </ul>
+  </td>
+</tr>
+<% } %> <% if (affiliations && affiliations.length>0) { %>
+<tr>
+  <td style="padding-bottom: 15px">
+    <p
+      class="text-left font-weight-bold"
+      style="padding-top: 12px; font-size: 20px"
+    >
+      Affilations
+    </p>
+    <ul>
+      <% for(var i=0; i < affiliations.length; i++) { %>
+      <li style="font-size: 19px"><%=affiliations[i]%></li>
+      <% } %>
+    </ul>
+  </td>
+</tr>
+<% } %> <% if (certifications && certifications.length>0) { %>
+<tr>
+  <td style="padding-bottom: 15px">
+    <p
+      class="text-left font-weight-bold"
+      style="padding-top: 12px; font-size: 20px"
+    >
+      Certifications
+    </p>
+    <ul>
+      <% for(var i=0; i < certifications.length; i++) { %>
+      <li style="font-size: 19px; margin-bottom: 5px">
+        <%=certifications[i]%>
+      </li>
+      <% } %>
+    </ul>
+  </td>
+</tr>
+<% } %> <% if (refrences && refrences.length>0) { %>
+<tr>
+  <td style="padding-bottom: 15px">
+    <p
+      class="text-left font-weight-bold"
+      style="padding-top: 12px; font-size: 20px"
+    >
+      References Information
+    </p>
+    <% for(var i=0; i < refrences.length; i++) { %>
+    <p
+      style="
+        font-size: 19px;
+        padding-left: 1.5em;
+        padding-top: 0.5em;
+        font-weight: bold;
+        line-height: 16px;
+      "
+    >
+      Name: <%=refrences[i].name%>
+    </p>
+    <p
+      style="
+        font-size: 19px;
+
+        padding-left: 1.5em;
+        font-weight: bold;
+
+        line-height: 16px;
+      "
+    >
+      Email: <%=refrences[i].email%>
+    </p>
+    <p
+      style="
+        font-size: 19px;
+
+        padding-left: 1.5em;
+        font-weight: bold;
+
+        line-height: 16px;
+      "
+    >
+      Phone: <%=refrences[i].phone%>
+    </p>
+    <p
+      style="
+        font-size: 19px;
+
+        padding-left: 1.5em;
+        font-weight: bold;
+
+        line-height: 16px;
+      "
+    >
+      Position: <%=refrences[i].position%>
+    </p>
+
+    <% } %>
+  </td>
+</tr>
+<% } %> <% if (additionalInformation && additionalInformation.length>0) { %>
+<tr>
+  <td style="padding-bottom: 15px">
+    <p
+      class="text-left font-weight-bold"
+      style="
+        padding-top: 12px;
+
+        font-size: 20px;
+      "
+    >
+      Additional Information
+    </p>
+    <% for(var i=0; i < additionalInformation.length; i++) { %>
+    <p
+      style="
+        font-size: 19px;
+        padding-left: 1.5em;
+        font-weight: bold;
+
+        line-height: 16px;
+      "
+    >
+      <%=additionalInformation[i].title%> :-
+      <%=additionalInformation[i].description%>
+    </p>
+    <% } %>
+  </td>
+</tr>
+<% } %> <% if (additionalDetails && additionalDetails.length>0) { %>
+<tr>
+  <td style="padding-bottom: 15px">
+    <p
+      class="text-left font-weight-bold"
+      style="padding-top: 12px; font-size: 20px"
+    >
+      Additional Details
+    </p>
+    <% for(var i=0; i < additionalDetails.length; i++) { %>
+    <p
+      style="
+        font-size: 19px;
+        padding-left: 1.5em;
+        font-weight: bold;
+        line-height: 16px;
+      "
+    >
+      <%=additionalDetails[i].key%> :- <%=additionalDetails[i].value%>
+    </p>
+    <% } %>
+  </td>
+</tr>
+<% } %>

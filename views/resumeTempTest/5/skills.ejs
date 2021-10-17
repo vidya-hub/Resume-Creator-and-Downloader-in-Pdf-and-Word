@@ -1,0 +1,26 @@
+<% if (skills && skills.length>0) { %>
+<tr>
+  <td
+    class="text-left font-weight-bold"
+    style="
+      padding-top: 12px;
+      font-size: 22px;
+
+      padding-bottom: 10px;
+      border-bottom: 1px solid #082970;
+    "
+  >
+    SKILLS SUMMARY
+  </td>
+  <td class="text-right"></td>
+</tr>
+<tr>
+  <td class="text-left" style="width: 100%">
+    <ul style="padding-top: 10px; font-size: 20px">
+      <% for(var i=0; i < skills.length; i++) { %>
+      <li><%=skills[i]%></li>
+      <% } %>
+    </ul>
+  </td>
+</tr>
+<%}%>

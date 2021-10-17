@@ -1,0 +1,50 @@
+<% if (education && education.length>0) { %>
+<tr>
+  <th
+    class="text-left font-weight-bold"
+    style="
+      padding-top: 12px;
+      font-size: 22px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #082970;
+    "
+  >
+    Education
+  </th>
+</tr>
+<tr>
+  <% for(var i=0; i < education.length; i++) { %>
+  <th
+    class="text-left font-weight-bold"
+    style="
+      padding-top: 12px;
+      padding-left: 12px;
+      font-weight: bold;
+      padding-left: 1px;
+    "
+  >
+    <p
+      style="
+        font-size: 19px;
+        margin-top: 0;
+
+        padding-left: 1.5em;
+        margin-bottom: 5px;
+        font-weight: lighter;
+      "
+    >
+      <b><%=education[i].fieldOfStudy%> <%=education[i].degree%></b>:
+      <%=education[i].graduationYear%> / <%=education[i].schoolName%>
+      <span
+        style="
+          position: relative;
+
+          left: 29.5em;
+        "
+      >
+        <%=education[i].schoolLocation%>, <%=education[i].state%>
+      </span>
+    </p>
+  </th>
+</tr>
+<% } %> <% } %>

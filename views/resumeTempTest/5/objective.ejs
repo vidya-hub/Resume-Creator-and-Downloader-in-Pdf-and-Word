@@ -1,0 +1,24 @@
+<% if (objectives && objectives.length>0) { %>
+<tr>
+  <td style="padding-bottom: 20px">
+    <p
+      class="text-left font-weight-bold"
+      style="
+        padding-top: 12px;
+        padding-bottom: 10px;
+        font-size: 22px;
+        border-bottom: 1px solid #082970;
+      "
+    >
+      OBJECTIVES
+    </p>
+    <ul>
+      <% for(var i=0; i < objectives.length; i++) { %>
+      <li style="font-size: 20px; text-align: justify; margin-bottom: 5px">
+        <%=objectives[i]%>
+      </li>
+      <% } %>
+    </ul>
+  </td>
+</tr>
+<% } %>

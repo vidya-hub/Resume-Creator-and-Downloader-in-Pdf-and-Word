@@ -2,68 +2,94 @@
 
 <div
   class="yui-gf"
-  style="margin-bottom: 2em; padding-bottom: 2em; border-bottom: 1px solid #ccc"
+  style="margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid #ccc"
 >
   <div class="yui-u first">
-    <h2 style="font-size: 152%; color: #333">Affiliations</h2>
+    <h2 style="font-size: 152%; font-weight: bold; color: #333">
+      Affiliations
+    </h2>
   </div>
-  <div class="yui-u">
-    <% for(var i=0; i < affiliations.length; i++) { %>
 
-    <div
-      class="job"
-      style="position: relative; margin-bottom: 1em; padding-bottom: 1em"
-    >
-      <h2 style="font-size: 152%; color: #333"><%=affiliations[i]%></h2>
+  <div class="yui-u">
+    <div class="talent" style="float: left">
+      <ul class="talent" style="padding-left: 1px; float: left">
+        <% for( let i = 0; i < affiliations.length; i++ ) { %>
+        <li
+          class="skill"
+          style="
+            line-height: 24px;
+            font-size: 16px;
+
+            list-style-type: disc;
+            color: black;
+          "
+        >
+          <%=affiliations[i]%>
+        </li>
+        <% } %>
+      </ul>
     </div>
-    <% } %>
   </div>
 </div>
 <% } %>
 <!--// .yui-gf -->
+
+<!--// .yui-gf -->
+
 <% if (certifications && certifications.length>0) { %>
 
 <div
   class="yui-gf"
-  style="margin-bottom: 2em; padding-bottom: 2em; border-bottom: 1px solid #ccc"
+  style="margin-bottom: 1em; padding-bottom: 1em; border-bottom: 2px solid #ccc"
 >
   <div class="yui-u first">
-    <h2 style="font-size: 152%; color: #333">Certifications</h2>
+    <h2 style="font-size: 152%; font-weight: bold; color: #333">
+      Certifications
+    </h2>
   </div>
-  <div class="yui-u">
-    <% for(var i=0; i < certifications.length; i++) { %>
 
-    <div
-      class="job"
-      style="position: relative; margin-bottom: 1em; padding-bottom: 1em"
-    >
-      <h2 style="font-size: 152%; color: #333"><%=certifications[i]%></h2>
+  <div class="yui-u">
+    <div class="talent" style="float: left">
+      <ul class="talent" style="padding-left: 1px; float: left">
+        <% for(var i=0; i < certifications.length; i++) { %>
+        <li
+          class="skill"
+          style="
+            line-height: 24px;
+            font-size: 16px;
+            list-style: disc;
+            color: black;
+          "
+        >
+          <%=certifications[i]%>
+        </li>
+        <% } %>
+      </ul>
     </div>
-    <% } %>
   </div>
 </div>
 <% } %>
+
 <!--// .yui-gf -->
 <% if (additionalDetails && additionalDetails.length>0) { %>
 
-<div
-  class="yui-gf"
-  style="margin-bottom: 2em; padding-bottom: 2em; border-bottom: 1px solid #ccc"
->
+<div class="yui-gf" style="margin-bottom: 1em; border-bottom: 1px solid #ccc">
   <div class="yui-u first">
-    <h2 style="font-size: 152%; color: #333">Additional Details</h2>
+    <h2 style="font-size: 152%; font-weight: bold; color: #333">
+      Additional Details
+    </h2>
   </div>
-  <div class="yui-u">
+  <div class="yui-u" style="padding-right: 10px">
     <% for( let i = 0; i < additionalDetails.length; i++ ) { %>
 
     <div
       class="job"
       style="position: relative; margin-bottom: 1em; padding-bottom: 1em"
     >
-      <h2 style="font-size: 152%; color: #333">
+      <h2 style="font-size: 152%; line-height: 24px; color: #333">
         <%= additionalDetails[i].key%>
       </h2>
-      <h3 style="font-size: 122%; color: #333">
+      <h3 style="font-size: 122%; line-height: 24px; color: #333">
         <%=additionalDetails[i].value%>
       </h3>
     </div>
@@ -75,24 +101,27 @@
 <!--// .yui-gf -->
 <% if (refrences && refrences.length>0) { %>
 
-<div
-  class="yui-gf"
-  style="margin-bottom: 2em; padding-bottom: 2em; border-bottom: 1px solid #ccc"
->
+<div class="yui-gf" style="margin-bottom: 1em; border-bottom: 1px solid #ccc">
   <div class="yui-u first">
-    <h2 style="font-size: 152%; color: #333">References</h2>
+    <h2 style="font-size: 152%; font-weight: bold; color: #333">References</h2>
   </div>
-  <div class="yui-u">
+  <div class="yui-u" style="padding-right: 10px">
     <% for( var i=0; i < refrences.length; i++) { %>
 
     <div
       class="job"
       style="position: relative; margin-bottom: 1em; padding-bottom: 1em"
     >
-      <h2 style="font-size: 152%; color: #333"><%=refrences[i].name%></h2>
-      <h3 style="font-size: 122%; color: #333"><%=refrences[i].position%></h3>
-      <h4 style="font-size: 122%"><%=refrences[i].phone%></h4>
-      <h4 style="padding-top: 20px; font-size: 122%">
+      <h2 style="font-size: 152%; line-height: 24px; color: #333">
+        <%=refrences[i].name%>
+      </h2>
+      <h3 style="font-size: 122%; line-height: 24px; color: #333">
+        <%=refrences[i].position%>
+      </h3>
+      <h4 style="font-size: 122%; line-height: 24px; color: #333">
+        <%=refrences[i].phone%>
+      </h4>
+      <h4 style="font-size: 122%; line-height: 24px; color: #333">
         <%=refrences[i].email%>
       </h4>
     </div>

@@ -1,0 +1,21 @@
+<tr>
+  <td class="font-weight-bold" style="text-align: center">
+    <div class="name" style="font-size: 2em; font-weight: bold">
+      <%= firstName %> <%= lastName %><br />
+    </div>
+
+    <div
+      class="address"
+      style="font-size: 22px; font-weight: 300; padding-top: 20px"
+    >
+      <% if (address && address.length>0) { %> <%= address %><br />
+      <%}%>
+    </div>
+    <div class="email" style="font-size: 22px; font-weight: 300">
+      <% if (email && email.length>0) { %> <%= email %> <%}%> . <% if (phoneNo
+      && phoneNo.length>0) { %> <%= phoneNo %><br />
+      <%}%>
+    </div>
+  </td>
+  <td class="text-right" width="50%"></td>
+</tr>

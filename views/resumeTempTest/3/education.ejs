@@ -1,0 +1,45 @@
+<% if (education && education.length>0) { %>
+<tr>
+  <td style="padding-bottom: 30px">
+    <p
+      class="text-left font-weight-bold"
+      style="padding-top: 12px; font-size: 20px"
+    >
+      Education
+    </p>
+    <% for(var i=0; i < education.length; i++) { %>
+    <p
+      style="
+        font-size: 19px;
+        margin-top: 0;
+        padding-left: 1.5em;
+        margin-bottom: 5px;
+      "
+    >
+      <b><%=education[i].fieldOfStudy%> <%=education[i].degree%></b>:
+      <%=education[i].graduationYear%>
+    </p>
+    <div
+      style="
+        display: flex;
+        padding-left: 1.5em;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+      "
+    >
+      <p
+        style="
+          font-size: 19px;
+          margin-top: 0;
+          padding-left: 4px;
+          margin-bottom: 5px;
+        "
+      >
+        <%=education[i].schoolName%> - <%=education[i].schoolLocation%>,
+        <%=education[i].state%>
+      </p>
+    </div>
+    <% } %>
+  </td>
+</tr>
+<% } %>

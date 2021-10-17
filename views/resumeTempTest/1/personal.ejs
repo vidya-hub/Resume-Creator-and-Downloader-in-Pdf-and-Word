@@ -1,59 +1,48 @@
 <h1 style="text-align: center"><%= firstName %> <%= lastName %></h1>
 
+<div id="first" style="width: 16em; float: left; padding-top: 10px">
+  <h3
+    style="
+      border-bottom: none;
+      font-variant: small-caps;
+      margin-top: 0;
+      margin-bottom: 0;
+    "
+  >
+    Personal Details
+  </h3>
+  <a><%=email %></a><br />
+  <a><%=phoneNo %></a><br />
+  <% if (links && links.length>0) { %> <% for(var i=0; i < links.length; i++) {
+  %>
+  <a><%= links[i] %></a><br />
+  <% } %> <% } %>
+</div>
 <div
   id="address"
   style="
-    height: 5em;
-    width: 48em;
-    padding: 1em;
-    height: 5em;
-    width: 48em;
-    padding: 1em;
+    padding-top: 10px;
+    padding-bottom: 1em;
+    text-align: justify;
+    height: 7em;
+    width: 53em;
   "
 >
-  <div style="width: 16em; float: left">
+  <div style="width: 150px; float: right">
     <h3
       style="
         border-bottom: none;
         font-variant: small-caps;
         margin-top: 0;
         margin-bottom: 0;
+        line-height: 24px;
       "
     >
-      Local Address
+      Address
     </h3>
-    <%= address %><br />
-  </div>
-  <div id="first" style="width: 16em; float: left">
-    <h3
-      style="
-        margin-bottom: 0;
-        border-bottom: none;
-        font-variant: small-caps;
-        margin-top: 0;
-      "
-    >
-      Credentials
-    </h3>
-    <br />
-    <a><%=email %></a><br />
-    <a><%=phoneNo %></a>
-    <% if (links && links.length>0) { %> <% for(var i=0; i < links.length; i++)
-    { %>
-    <a><%= links[i] %></a>
-    <% } %> <% } %>
-  </div>
-  <div style="width: 16em; float: left">
-    <h3
-      style="
-        margin-bottom: 0;
-        border-bottom: none;
-        font-variant: small-caps;
-        margin-top: 0;
-      "
-    >
-      Permanent Address
-    </h3>
-    <%=address %> <br />
+    <a><%=address %></a><br />
+
+    <a><%=city %></a> - <a><%=state %></a><br />
+    <a><%=zipCode %></a><br />
   </div>
 </div>

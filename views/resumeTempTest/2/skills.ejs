@@ -2,22 +2,29 @@
 
 <div
   class="yui-gf"
-  style="width: 80.2%; margin-bottom: 2em; padding-bottom: 2em"
+  style="
+    width: 80.2%;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    border-bottom: 2px solid #ccc;
+    padding-right: 11em;
+  "
 >
   <div class="yui-u first">
-    <h2 style="font-size: 152%; color: #333">Skills</h2>
+    <h2 style="font-size: 152%; font-weight: bold; color: #333">Skills</h2>
   </div>
 
   <div class="yui-u">
     <div class="talent" style="width: 32%; float: left">
-      <ul class="talent" style="width: 32%; float: left">
+      <ul class="talent" style="width: 32%; padding-left: 40px; float: left">
         <% for( let i = 0; i < skills.length; i++ ) { %>
         <li
           class="skill"
           style="
             line-height: 24px;
-            width: 100px;
-            padding-left: 40px;
+            width: 40em;
+            font-size: 16px;
+            list-style-type: disc;
             color: black;
           "
         >
@@ -27,5 +34,5 @@
       </ul>
     </div>
   </div>
-  <% } %>
 </div>
+<% } %>

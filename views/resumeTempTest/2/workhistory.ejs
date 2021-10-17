@@ -1,21 +1,31 @@
 <% if (workHistory && workHistory.length>0) { %>
-<div
-  class="yui-gf"
-  style="margin-bottom: 2em; padding-bottom: 2em; border-bottom: 1px solid #ccc"
->
+<div class="yui-gf" style="margin-bottom: 1em; border-bottom: 1px solid #ccc">
   <div class="yui-u first">
-    <h2 style="font-size: 152%; color: #333">Experience</h2>
+    <h2 style="font-size: 152%; font-weight: bold; color: #333">Experience</h2>
   </div>
-  <div class="yui-u">
+  <div class="yui-u" style="padding-right: 12px">
     <% for( let i = 0; i < workHistory.length; i++ ) { %>
 
     <div
       class="job"
       style="position: relative; margin-bottom: 1em; padding-bottom: 1em"
     >
-      <h2 style="font-size: 152%; color: #333">
-        <%=workHistory[i].employer%>,<%=workHistory[i].city%>,<%=workHistory[i].state%>
+      <h2
+        style="
+          font-size: 130%;
+          font-weight: bolder;
+          color: #333;
+          padding-bottom: 6px;
+        "
+      >
+        <%=workHistory[i].employer%>
       </h2>
+      <h2 style="font-size: 120%; color: #333; padding-bottom: 1px">
+        <%=workHistory[i].city%> - <%=workHistory[i].state%> -
+        <%=workHistory[i].country%>
+      </h2>
+
+      <h2 style="font-size: 120%; color: #333"><%=workHistory[i].jobTitle%></h2>
       <h4
         style="
           font-size: 122%;
@@ -23,15 +33,94 @@
           top: 0.35em;
           right: 0;
           color: #333;
+          left: 450px;
         "
       >
-        <%= workHistory[i].startDate %> &raquo; <%= workHistory[i].endDate %>
+        <%= new Date(workHistory[i].startDate).getMonth() + 1 +'/'+new
+        Date(workHistory[i].startDate).getFullYear() %> &raquo;
       </h4>
+
+      <% if (workHistory[i].currentlyWorkHere) { %>
+      <h4
+        style="
+          font-size: 122%;
+          position: absolute;
+          right: 0.5px;
+          color: #333;
+          padding-left: 0px;
+          top: 5.55px;
+        "
+      >
+        Current
+      </h4>
+      <% } %> <% if (!workHistory[i].currentlyWorkHere) { %>
+      <h4
+        style="
+          font-size: 122%;
+          position: absolute;
+          right: 0.5px;
+          color: #333;
+          padding-left: 0px;
+          top: 5.55px;
+        "
+      >
+        <%= new Date(workHistory[i].endDate).getMonth() + 1 +'/'+new
+        Date(workHistory[i].endDate).getFullYear() %>
+      </h4>
+      <% } %>
+
+      <h2
+        style="
+          font-size: 130%;
+          color: #333;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          font-style: italic;
+        "
+      >
+        Responsibilities
+      </h2>
+      <% if (workHistory[i].responsibility &&
+      workHistory[i].responsibility.length>0) { %> <% for( let j = 0; j <
+      workHistory[i].responsibility.length; j++ ) { %>
+      <ul style="padding-left: 20px">
+        <li
+          style="
+            line-height: 24px;
+            list-style-type: disc;
+            color: #333;
+            padding-left: 10px;
+          "
+        >
+          <%= workHistory[i].responsibility[j] %>
+        </li>
+      </ul>
+      <% } %> <% } %>
+
+      <h2
+        style="
+          font-size: 130%;
+          font-style: italic;
+          color: #333;
+          padding-top: 10px;
+          padding-bottom: 10px;
+        "
+      >
+        Environment
+      </h2>
       <% if (workHistory[i].environment && workHistory[i].environment.length>0)
       { %>
-      <ul>
+
+      <ul style="padding-left: 20px">
         <% for( let j = 0; j < workHistory[i].environment.length; j++ ) { %>
-        <li style="line-height: 24px; color: #333">
+        <li
+          style="
+            line-height: 24px;
+            padding-left: 15px;
+            list-style-type: disc;
+            color: #333;
+          "
+        >
           <%= workHistory[i].environment[j] %>
         </li>
         <% } %>

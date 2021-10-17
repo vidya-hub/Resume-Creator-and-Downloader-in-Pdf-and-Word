@@ -180,7 +180,7 @@
                         width="65%"
                         style="padding: 30px; background: #fcf7f7"
                       >
-                      <p
+                        <p
                           style="
                             color: grey;
                             font-size: 26px;
@@ -195,7 +195,7 @@
                           Objectives
                         </p>
                         <% for(var i=0; i < objectives.length; i++) { %>
-                          <p style="color: #000; font-size: 16px">
+                        <p style="color: #000; font-size: 16px">
                           <%=objectives[i]%>
                         </p>
                         <% } %>
@@ -444,9 +444,7 @@
                             <% } %>
                           </ul>
                         </div>
-                        <% } %> 
-                        
-                        <% if (additionalInformation &&
+                        <% } %> <% if (additionalInformation &&
                         additionalInformation.length>0) { %>
                         <div style="padding-bottom: 30px">
                           <p
@@ -470,10 +468,7 @@
                           </p>
                           <% } %>
                         </div>
-                        <% } %> 
-                        
-
-                        <% if (additionalDetails &&
+                        <% } %> <% if (additionalDetails &&
                         additionalDetails.length>0) { %>
                         <div style="padding-bottom: 30px">
                           <p
@@ -486,10 +481,10 @@
                               text-transform: uppercase;
                             "
                           >
-                          Additional Details
+                            Additional Details
                           </p>
-                          <% for(var i=0; i < additionalDetails.length; i++)
-                          { %>
+                          <% for(var i=0; i < additionalDetails.length; i++) {
+                          %>
                           <p style="font-size: 16px; line-height: 16px">
                             <span style="font-weight: bold"
                               ><%=additionalDetails[i].key%> </span
@@ -497,9 +492,7 @@
                           </p>
                           <% } %>
                         </div>
-                        <% } %> 
-                        
-                        <% if (refrences && refrences.length>0) { %>
+                        <% } %> <% if (refrences && refrences.length>0) { %>
                         <div style="padding-bottom: 30px">
                           <p
                             style="

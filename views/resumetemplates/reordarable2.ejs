@@ -16,7 +16,7 @@
         margin: 5mm;
       }
       html {
-        zoom: 0.5;
+        zoom: 0.8;
       }
 
       /* uncomment for check A4 size */
@@ -499,11 +499,8 @@
               "
             >
               <h2 style="font-size: 152%; color: #333">
-                <%= additionalDetails[i].key%>
+                <%=additionalDetails[i].value%> : <%= additionalDetails[i].key%>
               </h2>
-              <h3 style="font-size: 122%; color: #333">
-                <%=additionalDetails[i].value%>
-              </h3>
             </div>
             <% } %>
           </div>

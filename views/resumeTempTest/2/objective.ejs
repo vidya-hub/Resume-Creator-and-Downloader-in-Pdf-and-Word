@@ -1,18 +1,39 @@
 <% if (objectives && objectives.length>0) { %>
-<div class="yui-gf">
+
+<div
+  class="yui-gf"
+  style="
+    width: 80.2%;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    border-bottom: 2px solid #ccc;
+    padding-right: 11em;
+  "
+>
   <div class="yui-u first">
-    <h2>Objectives</h2>
+    <h2 style="font-size: 152%; font-weight: bold; color: #333">Objectives</h2>
   </div>
 
-  <div class="yui-u">
-    <div class="talent">
-      <ul class="talent">
-        <% for(var i=0; i < objectives.length; i++) { %>
-        <li class="skill"><%=objectives[i]%></li>
+  <div class="yui-u" style="padding-right: 7px">
+    <div class="talent" style="float: left">
+      <ol style="float: left">
+        <% for( let i = 0; i < objectives.length; i++ ) { %>
+
+        <li
+          style="
+            padding-left: 30px;
+            width: 550px;
+            text-align: justify;
+            color: black;
+            padding-bottom: 10px;
+            line-height: 24px;
+          "
+        >
+          <%=objectives[i]%>
+        </li>
         <% } %>
-      </ul>
+      </ol>
     </div>
   </div>
-
-  <% } %>
 </div>
+<% } %>

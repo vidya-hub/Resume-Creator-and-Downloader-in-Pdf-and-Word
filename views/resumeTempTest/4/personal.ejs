@@ -1,0 +1,13 @@
+<tr style="border-top: 6px solid rgb(67, 90, 118)">
+  <td
+    class="font-weight-bold"
+    style="width: 50%; font-size: 20px; padding-top: 20px; padding-bottom: 20px"
+  >
+    <%= firstName %> <%= lastName %><br />
+    <% if (email && email.length>0) { %> Email: <%= email %><br />
+    <%}%> <% if (phoneNo && phoneNo.length>0) { %> Phone: <%= phoneNo %><br />
+    <%}%> <% if (address && address.length>0) { %> Address: <%= address %><br />
+    <%}%>
+  </td>
+  <td class="text-right" width="50%"></td>
+</tr>

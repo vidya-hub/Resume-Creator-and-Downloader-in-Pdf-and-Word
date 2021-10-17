@@ -1,13 +1,48 @@
-<% if (affiliations && affiliations.length > 0) { %>
+<% if (accomplishments && accomplishments.length>0) { %>
 <div
   class="section"
-  style="border-top: 1px solid #ccc; margin: 1em 0; padding: 1em"
+  style="border-top: 1px solid #ccc; width: 850px; margin: 1em 0; padding: 1em"
 >
   <h2
     style="
-      width: 14em;
+      width: 10em;
       float: left;
-      font-size: 1em;
+      font-size: 20px;
+
+      font-variant: small-caps;
+      letter-spacing: 0.06em;
+    "
+  >
+    Accomplishments
+  </h2>
+  <div class="content" style="width: 32em; margin: 0 0 0 16em">
+    <ul style="padding-left: 0.1em; margin-left: 0.5em">
+      <% for(var i=0; i < accomplishments.length; i++) { %>
+      <li style="line-height: 24px"><%=accomplishments[i]%></li>
+      <% } %>
+    </ul>
+  </div>
+</div>
+<% } %> <% if (affiliations && affiliations.length>0) { %>
+<div
+  class="section"
+  style="
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    width: 850px;
+
+    padding-bottom: 0px;
+    padding-top: 0px;
+  "
+>
+  <h2
+    style="
+      float: left;
+      font-size: 20px;
+
       font-variant: small-caps;
       letter-spacing: 0.06em;
     "
@@ -15,9 +50,9 @@
     Affiliations
   </h2>
   <div class="content" style="width: 32em; margin: 0 0 0 16em">
-    <ul style="padding-left: 0.5em; margin-left: 0.5em">
+    <ul style="padding-left: 0.1em; margin-left: 0.5em">
       <% for(var i=0; i < affiliations.length; i++) { %>
-      <li><%=affiliations[i]%></li>
+      <li style="line-height: 24px"><%=affiliations[i]%></li>
       <% } %>
     </ul>
   </div>
@@ -25,13 +60,23 @@
 <% } %> <% if (certifications && certifications.length>0) { %>
 <div
   class="section"
-  style="border-top: 1px solid #ccc; margin: 1em 0; padding: 1em"
+  style="
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 1em;
+    width: 850px;
+
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  "
 >
   <h2
     style="
-      width: 14em;
       float: left;
-      font-size: 1em;
+      font-size: 20px;
+
       font-variant: small-caps;
       letter-spacing: 0.06em;
     "
@@ -41,62 +86,105 @@
   <div class="content" style="width: 32em; margin: 0 0 0 16em">
     <ul style="padding-left: 0.5em; margin-left: 0.5em">
       <% for(var i=0; i < certifications.length; i++) { %>
-      <li><%=certifications[i]%></li>
+      <li style="line-height: 24px"><%=certifications[i]%></li>
       <% } %>
     </ul>
   </div>
 </div>
-<% } %> <% if (additionalInformation && additionalInformation.length>0) { %>
+<% } %> <% if (additionalDetails && additionalDetails.length>0) { %>
+
 <div
   class="section"
-  style="border-top: 1px solid #ccc; margin: 1em 0; padding: 1em"
+  style="
+    border-top: 1px solid #ccc;
+    padding: 1em;
+    padding-top: 0em;
+    width: 850px;
+
+    padding-bottom: 1em;
+    padding-bottom: 0px;
+  "
 >
-  <h3
+  <h2
     style="
-      width: 14em;
       float: left;
-      font-size: 1em;
+      font-size: 20px;
+
       font-variant: small-caps;
       letter-spacing: 0.06em;
     "
   >
     Additional Details
-  </h3>
-  <div class="content">
-    <ul style="padding-left: 0.5em; margin-left: 0.5em">
-      <% for(var i=0; i < additionalDetails.length; i++) { %>
-      <li style="padding-left: 0.5em; margin-left: 0.5em">
-        <%=additionalDetails[i].key%>:- <%=additionalDetails[i].value%>
-      </li>
-      <% } %>
-    </ul>
+  </h2>
+
+  <div class="content" style="width: 32em; margin: 0 0 1em 16em">
+    <% for( let i = 0; i < additionalDetails.length; i++ ) { %>
+
+    <h3 style="margin-bottom: 0; line-height: 24px">
+      <%= additionalDetails[i].key%>
+    </h3>
+    <address
+      style="
+        font-style: italic;
+        color: #333;
+        line-height: 24px;
+        font-size: 0.9em;
+      "
+    >
+      <%= additionalDetails[i].value%>
+    </address>
+    <% } %>
   </div>
+  <% } %>
 </div>
-<% } %> <% if (refrences && refrences.length>0) { %>
+<% if (refrences && refrences.length>0) { %>
+
 <div
   class="section"
-  style="border-top: 1px solid #ccc; margin: 1em 0; padding: 1em"
+  style="
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+
+    padding: 1em;
+    padding-top: 0em;
+    width: 850px;
+
+    padding-bottom: 1em;
+    padding-bottom: 0px;
+  "
 >
-  <h3
+  <h2
     style="
-      width: 14em;
       float: left;
-      font-size: 1em;
+      font-size: 20px;
+
       font-variant: small-caps;
       letter-spacing: 0.06em;
     "
   >
     References
-  </h3>
-  <div class="content">
-    <% for(var i=0; i < refrences.length; i++) { %>
-    <tr>
-      <h4 style="margin-bottom: 0">
-        <%= refrences[i].name %> <%=refrences[i].position%>
-      </h4>
-      <address><%=refrences[i].phone%>,<%=refrences[i].email%></address>
-    </tr>
+  </h2>
+
+  <div class="content" style="width: 32em; margin: 1em 0 0.5em 16em">
+    <% for( var i=0; i < refrences.length; i++) { %>
+    <div
+      class="job"
+      style="position: relative; margin-bottom: 1em; padding-bottom: 0px"
+    >
+      <address style="font-style: italic; font-weight: bold; font-size: 1em">
+        <%=refrences[i].name%>
+      </address>
+      <address style="font-style: italic; color: #333; font-size: 0.9em">
+        <%=refrences[i].position%>
+      </address>
+      <address style="font-style: italic; color: #333; font-size: 0.9em">
+        <%=refrences[i].phone%>
+      </address>
+      <address style="font-style: italic; color: #333; font-size: 0.9em">
+        <%=refrences[i].email%>
+      </address>
+    </div>
     <% } %>
   </div>
+  <% } %>
 </div>
-<% } %>

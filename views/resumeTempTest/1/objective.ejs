@@ -1,23 +1,34 @@
 <% if (objectives && objectives.length>0) { %>
+
 <div
   class="section"
-  style="border-top: 1px solid #ccc; margin: 1em 0; padding: 1em"
+  style="
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 1em;
+    padding-bottom: 1em;
+    padding-bottom: 0px;
+    width: 850px;
+  "
 >
   <h2
     style="
-      width: 14em;
       float: left;
-      font-size: 1em;
+      font-size: 20px;
+
       font-variant: small-caps;
       letter-spacing: 0.06em;
     "
   >
     Objectives
   </h2>
-  <div class="content" style="width: 32em; margin: 0 0 0 16em">
-    <ul style="padding-left: 0.5em; margin-left: 0.5em">
-      <% for(var i=0; i < objectives.length; i++) { %>
-      <li><%=objectives[i]%></li>
+  <div
+    class="content"
+    style="width: 37em; margin: 0 0 0 16em; margin-left: 230px"
+  >
+    <ul style="text-align: justify">
+      <% for( let i = 0; i < objectives.length; i++ ) { %>
+      <li style="line-height: 24px"><%=objectives[i]%></li>
       <% } %>
     </ul>
   </div>

@@ -1,35 +1,30 @@
-// load the things we need
 var express = require('express');
 var app = express();
 var grabzit = require('grabzit');
-var nodemailer = require('nodemailer');
-var HTMLParser = require('node-html-parser');
-var bodyParser = require('body-parser');
-const { response } = require('express');
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true }));
-app.set('views', __dirname + '/views');
-var pdf = require('html-pdf');
-
-app.engine('html', require('ejs').renderFile);
+const HTMLtoDOCX = require('html-to-docx');
+var worldMapData = require('city-state-country');
 var http = require('http'),
     fs = require('fs'),
     url = require('url');
 let ejs = require("ejs");
-let path = require("path");
-app.set('view engine', 'ejs');
-const HTMLtoDOCX = require('html-to-docx');
-const filePath = './' + (Math.random().toString(36).substring(2, 16) + Math.random().toString(36).substring(2, 10)).toUpperCase() + ".docx";
-var worldMapData = require('city-state-country');
-
-
-var fs = require('fs');
 const { error } = require('console');
 const html_Docx = require('html-docx-js');
+let path = require("path");
+var pdf = require('html-pdf');
+var bodyParser = require('body-parser');
+const { response } = require('express');
+/* ==========  MiddleWare  ================= */
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
+app.set('views', __dirname + '/views');
+
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
+app.use(express.static('./'));
+/* ======================  */
+const filePath = './' + (Math.random().toString(36).substring(2, 16) + Math.random().toString(36).substring(2, 10)).toUpperCase() + ".docx";
 
 function exportHTML(htmldata) {
-    // var sourceHTML = header+document.getElementById("source-html").innerHTML+footer;
-
     var source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(htmldata);
     var fileDownload = document.createElement("a");
     document.body.appendChild(fileDownload);
@@ -39,19 +34,12 @@ function exportHTML(htmldata) {
     document.body.removeChild(fileDownload);
 }
 
-var session = require('express-session')({
-    secret: "@#$%^&*(LKJLKSALYUQWEMJQWN<MNQDKLJHSALKJDHAUISDIUDYSASHDAM<SD",
-    saveUninitialized: false,
-    resave: false
-});
-app.use(session);
-
-app.use(express.static('./'));
+/* =========    Dummy Resume Data   ======== */
 var resdata = {
-    listOfContent: ["./personal", "./education", "./workhistory", "./additionaldetails", "./objective", "./skills", "./summary",],
+    listOfContent: ["./personal", "./education", "./workhistory", "./skills", "./additionaldetails", "./objective", "./summary",],
     firstName: "First Name",
     lastName: "Last Name",
-    address: "ries of prompts where you can make some ",
+    address: "ries of 2lslfcsbfvjsb address",
     phoneNo: "Phone no",
     email: "Email Address",
     links: ["Social Media Links", "Professional Links"],
@@ -70,7 +58,7 @@ var resdata = {
             "city": "srikakulam",
             "state": "Andhra Pradesh",
             "country": "INdia",
-            "responsibility": ["Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.Created and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Work Responsibilities"],
+            "responsibility": ["Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Work Responsibilities"],
             "environment": ["dart", "java", "python"]
         },
         {
@@ -82,7 +70,7 @@ var resdata = {
             "city": "srikakulam",
             "state": "Andhra Pradesh",
             "country": "INdia",
-            "responsibility": ["Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.Created and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Work Responsibilities"],
+            "responsibility": ["Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Work Responsibilities"],
             "environment": ["dart", "java", "python"]
         }, {
             "startDate": parseInt('1562005800000', 10),
@@ -92,27 +80,15 @@ var resdata = {
             "currentlyWorkHere": "Work Details",
             "city": "srikakulam",
             "state": "Andhra Pradesh",
-            "country": "INdia",
-            "responsibility": ["Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.Created and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Work Responsibilities"],
-            "environment": ["dart", "java", "python"]
-        }, {
-            "startDate": parseInt('1562005800000', 10),
-            "jobTitle": "jobtitile",
-            "endDate": parseInt('1562005800000', 10),
-            "employer": "test Employee",
-            "currentlyWorkHere": "Work Details",
-            "city": "srikakulam",
-            "state": "Andhra Pradesh",
-            "country": "INdia",
-            "responsibility": ["Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.Created and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and ReinsuranceCreated and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Work Responsibilities"],
-            "environment": ["dart", "java", "python"]
+            "responsibility": ["Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Designed and developed Stimulations using use cases, activity diagrams, sequence diagrams,using UML.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Created and developed new functionality in the application to meet home loan and Property & Casualty needs and Reinsurance.", "Work Responsibilities"],
+            "country": "INdia", "environment": ["dart", "java", "python"]
         },
 
     ],
     objectives: [
-        "This will take you through a series of prompts where you can make some changes to your MySQL installation’s security options. The first prompt will ask whether you’d like to set up the Validate Password Plugin, which can be used to test the strength of your MySQL password. Regardless of your choice, the next prompt will be to set a password for the MySQL root user. Enter and then confirm a secure password of your choice.\ From there, you can press Y and then ENTER to accept the defaults for all the subsequent questions. This will remove some anonymous users and the test database, disable remote root logins, and load these new rules so that MySQL immediately respects the changes you have made.   To initialize the MySQL data directory, you would use mysql_install_db for versions before 5.7.6, and mysqld --initialize for 5.7.6 and later. However, if you installed MySQL from the Debian distribution, as described in Step 1, the data directory was initialized automatically; you don’t have to do anything. If you try running the command anyway, you’ll see the following error:This will take you through a series of prompts where you can make some changes to your MySQL installation’s security options. The first prompt will ask whether you’d like to set up the Validate Password Plugin, which can be used to test the strength of your MySQL password. Regardless of your choice, the next prompt will be to set a password for the MySQL root user. Enter and then confirm a secure password of your choice.From there, you can press Y and then ENTER to accept the defaults for all the subsequent questions. This will remove some anonymous users and the test database, disable remote root logins, and load these new rules so that MySQL immediately respects the changes you have made.   To initialize the MySQL data directory, you would use mysql_install_db for versions before 5.7.6, and mysqld --initialize for 5.7.6 and later. However, if you installed MySQL from the Debian distribution, as described in Step 1, the data directory was initialized automatically; you don’t have to do anything. If you try running the command anyway, you’ll see the following error:",
-        "This will take you through a series of prompts where you can make some changes to your MySQL installation’s security options. The first prompt will ask whether you’d like to set up the Validate Password Plugin, which can be used to test the strength of your MySQL password. Regardless of your choice, the next prompt will be to set a password for the MySQL root user. Enter and then confirm a secure password of your choice.\ From there, you can press Y and then ENTER to accept the defaults for all the subsequent questions. This will remove some anonymous users and the test database, disable remote root logins, and load these new rules so that MySQL immediately respects the changes you have made.   To initialize the MySQL data directory, you would use mysql_install_db for versions before 5.7.6, and mysqld --initialize for 5.7.6 and later. However, if you installed MySQL from the Debian distribution, as described in Step 1, the data directory was initialized automatically; you don’t have to do anything. If you try running the command anyway, you’ll see the following error:",
-        "This will take you through a series of prompts where you can make some changFrom there, you can press Y and then ENTER to accept the defaults for all the subsequent questions. This will remove some anonymous users and the test database, disable remote root logins, and load these new rules so that MySQL immediately respects the changes you have made.   To initialize the MySQL data directory, you would use mysql_install_db for versions before 5.7.6, and mysqld --initialize for 5.7.6 and later. However, if you installed MySQL from the Debian distribution, as described in Step 1, the data directory was initialized automatically; you don’t have to do anything. If you try running the command anyway, you’ll see the following error:",
+        "This will take you through a series as described in Step 1, the data director automatically; you don’t have to do anything. If you try running the command anyway, you’ll see the following error:",
+        "This will take you through a series as described in Step 1, the data directory was initialized automatically; you don’t have to do anything. If you try running the command anyway, you’ll see the following error:",
+        "This will take you through a series  the MySQL data directory, you would use mysql_install_db for versions before 5.7.6, and mysqld --initialize for 5.7.6 and later. However, if you installed MySQL from the Debian distribution, as described in Step 1, the data directory was initialized automatically; you don’t have to do anything. If you try running the command anyway, you’ll see the following error:",
 
 
     ],
@@ -178,12 +154,11 @@ var resdata = {
             "state": "State Details"
         },
     ],
-    accomplishments: ["This will take you through a series of prompts where you can make some changes to your MySQL installation’s ",
-        "This will take you through a series of prompts where you can make some changes to your MySQL installation’s  2",
+    accomplishments: ["This will take you through a series of prompts w to your MySQL installation’s  2",
     ],
     affiliations: [
-        "This will take you through a series of prompts where you can make some changes to your MySQL installation’s ",
-        "This will take you through a series of prompts where you can make some changes to your MySQL installation’s  2",
+        "This will take you through a series or MySQL installation’s ",
+        "This will take you through a series or MySQL installation’s  2",
     ],
     refrences: [{
         "name": "Reference Details",
@@ -217,13 +192,6 @@ var resdata = {
         "Certifications 3",
         "Certifications 1",
         "Certifications 2",
-        "Certifications 3", "Certifications 1",
-        "Certifications 2",
-        "Certifications 3", "Certifications 1",
-        "Certifications 2",
-        "Certifications 3", "Certifications 1",
-        "Certifications 2",
-        "Certifications 3",
     ],
     summary: [
         "Nice on acctually",
@@ -232,9 +200,6 @@ var resdata = {
     ],
     namevalue: "NOthing"
 }
-resdata.valie = ["bsbfs", "bbsfb"];
-// console.log(resdata);
-// resdata.set()
 
 function timeout(ms) { //pass a time in milliseconds to this function
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -301,7 +266,8 @@ async function htmldocx(htmlString) {
         console.log('Docx file created successfully');
     });
 };
-pathval = path.join(__dirname, 'views/resumetemplates/', "reordarable1.ejs")
+var pathejstest = path.join(__dirname, 'views/resumeTempTest/2/', "resume.ejs")
+pathval = path.join(__dirname, 'views/resumetemplates/', "reordarable3.ejs")
 // console.log(fs.existsSync("index.js"));
 app.use("/public", express.static(__dirname + "/public/"));
 app.get('/', async (req, res) => {
@@ -348,7 +314,6 @@ app.get('/', async (req, res) => {
 });
 
 var pathejs = path.join(__dirname, 'views/resumetemplates/', "resume8.ejs")
-var pathejstest = path.join(__dirname, 'views/resumeTempTest/2/', "resume.ejs")
 
 // var pathhtml = path.join(__dirname, 'views/resumetemplates/', "test.html")
 

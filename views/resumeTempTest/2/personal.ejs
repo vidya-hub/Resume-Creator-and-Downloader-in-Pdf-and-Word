@@ -1,4 +1,11 @@
-<div id="hd" style="margin: 2.5em 0 3em 0; padding-bottom: 1.5em">
+<div
+  id="hd"
+  style="
+    margin: 2.5em 0 1em 0;
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid #ccc;
+  "
+>
   <div class="yui-gc">
     <div class="yui-u first">
       <h1
@@ -17,14 +24,28 @@
       <div class="contact-info" style="margin-top: 7px">
         <h3 style="font-size: 122%; color: #333"><%= address %></h3>
         <h3 style="font-size: 122%; color: #333">
-          <a style="color: #990003"><%=email %></a><br />
+          <a style="color: #990003; line-height: 24px"><%=city%></a>
         </h3>
         <h3 style="font-size: 122%; color: #333">
-          <a style="color: #990003"><%=phoneNo %></a>
+          <a style="color: #990003; line-height: 24px"><%=state %></a>
         </h3>
+
+        <h3 style="font-size: 122%; color: #333">
+          <a style="color: #990003; line-height: 24px"><%=zipCode %></a>
+        </h3>
+        <h3 style="font-size: 122%; color: #333">
+          <a style="color: #990003; line-height: 24px"><%=email %></a><br />
+        </h3>
+        <h3 style="font-size: 122%; color: #333">
+          <a style="color: #990003; line-height: 24px"><%=phoneNo %></a>
+        </h3>
+
         <% if (links && links.length>0) { %> <% for(var i=0; i < links.length;
         i++) { %>
-        <a style="color: #990003"><%= links[i] %></a>
+        <h3 style="font-size: 122%; color: #333">
+          <a style="color: #990003; line-height: 24px"><%= links[i] %></a>
+          <br />
+        </h3>
         <% } %> <% } %>
       </div>
     </div>

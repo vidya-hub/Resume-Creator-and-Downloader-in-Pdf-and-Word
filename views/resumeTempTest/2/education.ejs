@@ -1,26 +1,20 @@
 <% if (education && education.length>0) { %>
 
-<div
-  class="yui-gf"
-  style="margin-bottom: 2em; padding-bottom: 2em; border-bottom: 1px solid #ccc"
->
+<div class="yui-gf" style="margin-bottom: 1em; border-bottom: 1px solid #ccc">
   <div class="yui-u first">
-    <h2 style="font-size: 152%; color: #333">Education</h2>
+    <h2 style="font-size: 152%; font-weight: bold; color: #333">Education</h2>
   </div>
-  <div class="yui-u">
+  <div class="yui-u" style="padding-right: 12px">
     <% for( let i = 0; i < education.length; i++ ) { %>
 
-    <div
-      class="job"
-      style="position: relative; margin-bottom: 1em; padding-bottom: 1em"
-    >
-      <h2 style="font-size: 152%; color: #333">
+    <div class="job" style="position: relative; margin-bottom: 1em">
+      <h2 style="font-size: 142%; line-height: 24px; color: #333">
         <%= education[i].fieldOfStudy %> <%=education[i].degree%>
       </h2>
-      <h3 style="font-size: 122%; color: #333">
+      <h3 style="font-size: 122%; line-height: 24px; color: #333">
         <%=education[i].schoolName%>,<%=education[i].schoolLocation%>,<%=education[i].state%>
       </h3>
-      <h4 style="font-size: 122%; color: #333">
+      <h4 style="font-size: 122%; line-height: 24px; color: #333">
         <%= education[i].graduationYear %>
       </h4>
     </div>

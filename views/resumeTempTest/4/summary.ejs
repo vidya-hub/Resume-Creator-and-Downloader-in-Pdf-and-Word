@@ -1,0 +1,24 @@
+<% if (summary && summary.length>0) { %>
+<tr>
+  <td
+    class="text-left font-weight-bold"
+    style="
+      padding-top: 12px;
+
+      font-size: 20px;
+    "
+  >
+    PROFESSIONAL SUMMARY
+  </td>
+  <td class="text-right"></td>
+</tr>
+<tr>
+  <td class="text-left" style="width: 100%" colspan="2">
+    <ul style="font-size: 19px">
+      <% for(var i=0; i < summary.length; i++) { %>
+      <li><%=summary[i]%></li>
+      <% } %>
+    </ul>
+  </td>
+</tr>
+<%}%>
